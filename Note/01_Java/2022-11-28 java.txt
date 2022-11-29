@@ -1,0 +1,38 @@
+-Java의 장점 : CPU 독립적, OS 독립적 프로그래밍, 개발과 유지 보수가 효율적으로 진행(가상머신 사용-JVA)
+-Java의 단점: 속도가 상대적으로 느림, but 컴퓨터 성능의 대폭적인 상승으로 현재는 단점이라고 보기 힘듦.
+
+-컴퓨터 웹 프로그래밍 언어들의 예시
+Java -> JSP -> Spring Framework
+cf. 앱 : Java -> Android Framework
+Python -> dJango Framework
+
+Java의 특징
+1. Virtual Machine – 운영체제(윈도우, 리눅스, 맥OS)의 영향을 받지 않음
+2. Garbage Collection – 개발자는 메모리 관리를 하지 않는다. JVM이 메모리 자동 관리
+3. Object Oriented Program(OOP) – 객체지향 언어로 개발과 유지보수를 효율적으로 진행
+4. 다중 쓰레드를 지원
+5. 기능이 지원 – 접근에 대한 권한을 변수로 처리 – Access Modifier(접근 제어자)
+
+
+
+Java 프로그래밍 환경 설정 및 실행 방법
+
+-Java 개발 환경 설정
+1.JDK(Java Development Kit) 자바 개발 키트
+2.IDE(Integrated Development Environment); 통합 개발 툴(편집기) ex. 메모장, eclipse
+
+-JDK 설치
+1.java.sun.com 또는 www.oracle.com 접속
+2.Downloads 에서 JDK 최신버전 다운로드 : 운영체제에 맞는 jdk (Java SE 8u321)
+3.다운받은 파일을 install
+
+-Java 환경 변수 설정
+1.bin/javac.exe(컴파일러) : *.java 파일을 JVM이 받아들일 수 있는 .class 파일로 변환시켜주는 프로그램. 
+매번 해당 경로에 들어가서 실행하기가 번거로우므로, 환경 변수 설정을 통해 어디서나 실행하도록 한다.
+bin/java.exe(JVM) : *.class 파일을 실행하도록 한다
+위의 bin폴더에 있는 파일을 어디서나 실행하기 위해 아래의 환경변수 설정을 한다
+2.내PC 오른쪽 마우스 – 속성 - 고급시스템설정 - 환경변수
+3.시스템변수 새로만들기-변수이름:JAVA_HOME  / 변수값 : JDK설치된 폴더
+4.Path에  ; %JAVA_HOME%\bin; 추가
+
+이클립스 다운로드 : Java8, 11마다 호환이 좋은 버전을 googling 후 설치.
