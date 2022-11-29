@@ -4,6 +4,7 @@ public class VarEx04 {
 	public static void main(String[] args) {
 		// 변수 선언은 위치 제약이 없음. 다만 위에 선언할 것을 추천.
 		char c = '씨'; // 2byte
+		System.out.println("c = " + c);
 		int i = 20; // 4byte
 		long l = 2200000000L; // 8byte
 		System.out.println("l = " + l);

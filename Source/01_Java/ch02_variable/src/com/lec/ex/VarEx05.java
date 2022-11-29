@@ -9,5 +9,7 @@ public class VarEx05 {
 		String name;
 		name = "È«±æµ¿";
 		name = "±è¼öÇÑ¹«°ÅºÏÀÌ";
+		System.out.println(i);
+		System.out.println(name);
 	}
 }
