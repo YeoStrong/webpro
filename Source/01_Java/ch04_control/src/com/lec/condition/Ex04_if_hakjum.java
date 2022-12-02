@@ -18,7 +18,7 @@ public class Ex04_if_hakjum {
 		}else if(0<=score && score<=60) {
 			System.out.println("F학점");
 		}else {
-			System.out.println("유효하지 않은 점수입니다.");
+			System.out.println("올바른 점수를 입력해 주세요.");
 		}
 		sc.close();
 	}

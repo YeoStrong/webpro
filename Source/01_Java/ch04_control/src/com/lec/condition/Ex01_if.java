@@ -8,9 +8,9 @@ public class Ex01_if {
 		}else if(score>=70) {
 			System.out.println("±¦Âú½À´Ï´Ù.");
 		}else if(score>=60) {
-			System.out.println("Á» ¸øÇÏ½Ã³×¿ä.");
+			System.out.println("¾îÀÌÄí.");
 		}else {
-			System.out.println("¹ÌÃÆ½À´Ï±î ÈŞ¸Õ.");
+			System.out.println("±¦Âú¾Æ ´Ù½Ã ÇÏ¸é µÅ.");
 		}
 		System.out.println("DONE");
 	}

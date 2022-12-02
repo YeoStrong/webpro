@@ -8,30 +8,25 @@ public class Ex07_switch_RandomHakjum {
 		// 0 <= score <101 의 정수 난수
 		// System.out.println((int)(Math.random()*101));
 		int score = (int)(Math.random()*101);
-		int temp = (score == 100) ? score-1 : score; //이러면 100점도 99점으로 출력
-		switch(temp/10) {
-		case 9:
-			System.out.println(score + "점, A학점");break;
-		case 8:
-			System.out.println(score + "점, B학점");break;
-		case 7:
-			System.out.println(score + "점, C학점");break;
-		case 6:
-			System.out.println(score + "점, D학점");break;
-		case 5:
-			System.out.println(score + "점, F학점");break;
-		case 4:
-			System.out.println(score + "점, F학점");break;
-		case 3:
-			System.out.println(score + "점, F학점");break;
-		case 2:
-			System.out.println(score + "점, F학점");break;
-		case 1:
-			System.out.println(score + "점, F학점");break;
-		case 0:
-			System.out.println(score + "점, F학점");break;
-		default:
-			System.out.println("유효하지 않은 점수입니다");
+//		int temp = (score == 100) ? score-1 : score; //이러면 100점도 99점으로 출력
+		if(score == 100) {
+			System.out.println(score + "점, A+학점입니다!");
+		}
+		else {
+			switch(score/10) {
+			case 9:
+				System.out.println(score + "점, A학점");break;
+			case 8:
+				System.out.println(score + "점, B학점");break;
+			case 7:
+				System.out.println(score + "점, C학점");break;
+			case 6:
+				System.out.println(score + "점, D학점");break;
+			case 5: case 4: case 3: case 2: case 1: case 0:
+				System.out.println(score + "점, F학점");break;
+			default:
+				System.out.println("유효하지 않은 점수입니다");
+			}
 		}
 	}
 }

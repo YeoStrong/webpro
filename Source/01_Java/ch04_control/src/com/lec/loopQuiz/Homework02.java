@@ -18,14 +18,16 @@ public class Homework02 {
 			youStr = (you == 0) ? "가위" : (you == 1) ? "바위" : "보자기";
 			if (0 > you || 2 < you) {
 				System.out.println("유효한 값을 입력하세요.");
-			} else if ((you + 2) % 3 == computer) {
-				System.out.printf("당신은 %s, 컴퓨터는 %s, 당신이 이겼습니다.", youStr, computerStr);
-			} else if ((you) % 3 == computer) {
-				System.out.printf("당신은 %s, 컴퓨터는 %s, 비겼습니다.", youStr, computerStr);
+			} else {
+				if ((you + 2) % 3 == computer) {
+					System.out.printf("당신은 %s, 컴퓨터는 %s, 당신이 이겼습니다.", youStr, computerStr);
+				} else if((you+1)%3 == computer) {
+				System.out.printf("당신은 %s, 컴퓨터는 %s, 당신은 졌습니다. 게임을 종료합니다.", youStr, computerStr);
+				} else {
+					System.out.printf("당신은 %s, 컴퓨터는 %s, 당신은 졌습니다. 게임을 종료합니다.", youStr, computerStr);					
+				}
 			}
 		} while ((you + 1) % 3 != computer);
-		{
-			System.out.printf("당신은 %s, 컴퓨터는 %s, 당신은 졌습니다. 게임을 종료합니다.", youStr, computerStr);
-		}scan.close();
+		scan.close();
 	}
 }
