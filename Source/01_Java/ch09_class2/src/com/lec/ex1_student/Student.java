@@ -52,4 +52,10 @@ public class Student {
 	public int getMath() {
 		return math;
 	}
+	public int getTot() {
+		return tot;
+	}
+	public double getAvg() {
+		return avg;
+	}
 }
