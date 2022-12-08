@@ -1,7 +1,5 @@
 package com.lec.quiz;
 
-import com.lec.ex1_student.Student;
-
 public class StudentMain {
 	public static void main(String[] args) {
 			Student s1 = new Student("Á¤¿ì¼º", 90, 80, 95);

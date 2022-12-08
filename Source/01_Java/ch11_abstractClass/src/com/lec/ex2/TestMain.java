@@ -1,0 +1,19 @@
+package com.lec.ex2;
+
+public class TestMain {
+	public static void main(String[] args) {
+		SuperClass obj = new ChildClass(); // SuperClass 타입으로만 가능. 객체생성은 불가능
+		obj.method1();
+		obj.method2();
+		obj.method3();
+		SuperClass sObj = new SuperClass() {
+			
+			@Override
+			public void method1() {
+				System.out.println("익명class의 method1"); //다만 java에서는 이런 식으로 하지 않음
+				
+			}
+		};
+		sObj.method1(); sObj.method2(); sObj.method3();
+	}
+}

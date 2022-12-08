@@ -30,7 +30,7 @@ public class Student {
 //		this.avg = avg;
 //	}
 	public String infoString() {
-		return String.format("%d\t%s\t%d\t%d\t%d\t%d\t%d\n", num, name, kor, eng, math, tot, avg);
+		return String.format("\t%d\t%s\t%d\t%d\t%d\t%d\t%d\n", num, name, kor, eng, math, tot, avg);
 	}
 	public int getNum() {
 		return num;
