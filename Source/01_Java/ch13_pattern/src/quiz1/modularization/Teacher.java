@@ -14,7 +14,13 @@ public class Teacher extends Person {
 		setJob(new JobLec());
 		setGet(new GetSalary());
 	}
-	public void setsubject(String subject) {
+	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		super.print();
+		System.out.println("\t[°ú¸ñ]" + subject);
 	}
 }

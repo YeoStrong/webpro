@@ -17,4 +17,10 @@ public class Student extends Person {
 	public void setBan(String ban) {
 		this.ban = ban;
 	}
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		super.print();
+		System.out.println("\t[¹Ý]" + ban);
+	}
 }

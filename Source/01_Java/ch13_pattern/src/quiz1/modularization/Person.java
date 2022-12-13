@@ -21,7 +21,7 @@ public abstract class Person {
 		get.get();
 	}
 	public void print() {
-		System.out.println(id + name);
+		System.out.print("[ID]" + id + "\t[¿Ã∏ß]" + name);
 	}
 	public void setId(String id) {
 		this.id = id;

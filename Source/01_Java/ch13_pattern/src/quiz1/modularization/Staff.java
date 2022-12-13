@@ -14,7 +14,13 @@ public class Staff extends Person {
 		setJob(new JobMng());
 		setGet(new GetSalary());
 	}
-	public void setpart(String part) {
+	public void setPart(String part) {
 		this.part = part;
+	}
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		super.print();
+		System.out.println("\t[ºÎ¼­]" + part);
 	}
 }
