@@ -22,7 +22,7 @@ public class Ex06_telPrint {
 			} // for1
 			System.out.println();
 			System.out.print("문자를 거꾸로: ");
-			for (int i = tel.length() - 1; i >= 0; i--) {
+			for (int i = tel.length()-1 ; i >= 0 ; i--) {
 				System.out.print(tel.charAt(i));
 			} // for2
 			System.out.println();
