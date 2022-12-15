@@ -7,8 +7,8 @@ import java.util.GregorianCalendar;
 
 public class Ex06_SimpleDateFormat {
 	public static void main(String[] args) {
-		Date nowDate = new Date();
-		Calendar nowCal = Calendar.getInstance();
+		Date 			  nowDate = new Date();
+		Calendar 		  nowCal = Calendar.getInstance();
 		GregorianCalendar nowGc = new GregorianCalendar(2022,1,1,1,1,1);
 		/* yyyy(년도 4자리) yy(년도 2자리) MM(03), M(3), dd(08), d(8)
 		 * E(요일) a(오전/오후) H(24시) h(12시) m(분) s(초) 
