@@ -1,0 +1,58 @@
+Exception
+
+1. 예외
+프로그램에서 문제가 발생될 만한 곳을 예상하여 
+사전에 "문제가 발생하면 이렇게 해라."라고 프로그래밍 하는 것을 예외 처리라 함.
+
+2. 예외처리의 필요성
+몇 달 동안 심혈을 기울여 만들어 놓은 프로젝트가 단순한 어떤 이유로 작동을 하지 않는다면 
+프로그램의 프로세스가 완전 죽은 것이고 다시 재가동을 시키지 않으면 움직이지 않는 상태가 된다.
+예외의 필요성은 어느 한 부분에서 예외가 발생하더라도 계속해서 프로그램이 동작되도록 하는데 목적이 있다. 
+어떤 문제가 하나 발생되었다고 그 프로세스가 완전히 정지되어 시스템을 재가동하기 전까지는 구동을 아예 못한다고 한다면 너무 많은 손실을 볼 것이기 때문.
+
+3. 예외처리 문법(try ~ catch)
+
+try {
+	    try블럭 ; 익셉션이 발생할 가능성이 있는 명령문들
+	}catch(ArrayIndexOutOfBoundsException a) {
+	    ArrayIndexOutOfBounds 익셉션을 처리하는 명령문
+	} catch(NumberFormatException n) {
+	    NumberFormat 익셉션을 처리하는 명령문
+	} catch(Exception e) {
+	    그 외 익셉션을 처리하는 명령문
+	} finally {
+	    익셉션 발생 여부와 상관없이 맨 마지막에 실행할 명령
+	}
+
+※ finally 블럭은 try와 catch문의 영향 없이 무조건 실행됨
+
+
+4. 예외처리 문법(throws)
+try ~ catch 예외 처리 방법은 예외가 발생했을 때 자체적으로 catch문을 이용해서 해결
+이번에 살펴볼 throws의 경우에는 나를 호출한(실행시키는) 쪽으로 예외를 던져버리는 방식
+
+
+5. 일반적으로 많이 보게 되는 예외들
+
+Exception의 종류는 아주 많다.
+Exception클래스는 많은 예외들(자식클래스)를 가지고 있다. 모든 예외를 습득한다는 것은 불가능.
+JAVA API문서를 통해서 Exception클래스가 얼마나 많은 자식 클래스를 가지고 있는지 알 수 있다.
+
+※ ArrayIndexOutOfBoundsException > 배열을 사용시 존재하지 않는 index값을 호출하면 발생
+	int[] iArr = {0,1,2,3};
+	System.out.println(iArr[4]);
+
+※ NullPointerException > 존재하지 않는 객체를 가리킬 때 발생
+
+
+※ DB 관련 Exception
+ClassNotFoundException : 드라이브 이름을 찾지 못했을 때
+SQLException : db url, id, pw가 올바르지 않을 때
+
+등등 Exception의 종류만 봐도 왜 예외가 일어났는지 직관적으로 알 수 있다.
+
+
+
+6. 강제로 예외 발생시키기(코드에서 예외 발생시키기)
+	throw new Exception(“에러메세지”);
+
