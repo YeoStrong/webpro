@@ -1,0 +1,68 @@
+자바 파일 입출력(i/o)
+
+1. 입출력이란?
+입력(Input)과 출력(Output). 
+프로그램에게 입력하는 것은 Input, 프로그램에서 어떤 것을 출력하는 것을 Output
+예를 들어 ‘System.out.println("HelloWorld~~");’ Outpu
+어떤 데이터를 ‘읽는다’ 라고 하면 입력(Input)
+데이터를 ‘쓴다‘라고 하면 출력(Output)이라고 생각 하면 됨.
+(1) Input : 파일 데이터를 읽는다. 키보드의 데이터를 읽는다. 네트워크상의 데이터를 읽는다(전송)
+(2) Output :파일에 데이터를 쓴다. 모니터에 데이터를 쓴다(출력). 네트워크상에 데이터를 쓴다(전송)
+
+
+2. Java에서의 파일입출력 API
+(1) InputStream : 1byte단위 입력 API. 이미지, 동영상 등의 데이터에 주로 사용
+(2) OutputStream : 1byte단위 출력 API. 이미지, 동영상 등의 데이터에 주로 사용
+(3) Reader : 2byte단위 입력 API. 문자열에 주로 사용
+(4) Writer : 2byte단위 출력 API. 문자열에 주로 사용
+(5) DataInputStream / DataOutputStream
+(6) BufferedReader / BufferedWriter
+(7) PrintWriter
+
+cf. 스트림(Stream)이란 데이터를 운반(입출력)하는데 사용되는 연결통로. 연속적인 데이터의 흐름을 물(stream)에 비유해서 붙여진 이름. 하나의 스트림으로 입출력을 동시에 수행할 수 없다(단방향통신). 입출력을 동시에 수행하려면 2개의 스트림이 필요하다
+① 파일로부터 데이터를 읽는 3단계 : 파일(연결통로)을 연다 -> 파일의 데이터를 읽는다(필요한 만큼 반복) -> 파일을 닫는다
+② 파일에 데이터를 쓰는 3단계 : 파일(연결통로)을 연다 -> 파일에 데이터를 쓴다 -> 파일을 닫는다
+
+	(1) InputStream 사용법
+		① InputStream(추상) 클래스를 상속받은 여러 가지 API 하위 클래스 중의 하나를 이용해서 객체를 만든다. 또는 다른 클래스의 메소드에서 반환(리턴)되는 타입 객체를 얻는다.
+		② read(), read(byte[]) 두 개의 메소드를 이용하여 데이터를 읽는다.
+			i. read() 1byte씩 읽는다. 속도가 느리다
+			ii. read(byte[]) byte[]만큼씩 읽는다. 속도가 빠르다.
+		③ 예외 처리와 무조건 close() 실행
+			i. I/O를 하면서 반드시 IOException 예외처리를 해야 한다. 반드시 하도록 컴파일러가 강요
+			ii. I/O 작업 마지막은 close()로 외부 연결을 끝내야 함.
+
+
+3. 파일 읽고 쓰기
+(1) 읽고, 쓰기를 동시에 – 파일 복사
+	① 파일을 읽고, 그대로 다른 파일에 쓰고 = 파일 복사
+	② 작업순서 : InputStream, OutputStream 준비 > is로 읽어들인 데이터를 os으로 씀 > 외부연결 close()함. 
+	③ read() : read(), read(byte[]) 등 다양한 메소드 이용 가능
+	④ write() : write(byte), write(byte[]), (write(byte[], int, int) 등 다양한 메소드 이용 가능
+
+
+4. 조금 발전된, 속도를 빨리 하기 위한 Data 스트림 : DataInputStream, DataOutputStream
+
+
+5. 텍스트 읽고 쓰기
+	(1) Reader ; 2byte 단위의 읽기
+	(2) BufferedReader, BufferedWriter 클래스: 속도를 빨리 하기 위한 보조 스트림
+	(3) Writer ; 2byte 단위의 쓰기
+
+
+
+[ i/o에 앞서 File클래스] 파일 크기, 속성, 파일이름 정보를 갖고, 생성 및 삭제 메서드 포함
+	- 파일 안엔 디렉토리도 포함 : 생성, 디렉토리에 포함된 파일 리스트도 가져올 수 있다.
+	- 생성/삭제 메서드
+		File file = new File(“경로명/파일명”); 논리적인 파일이나 디렉토리
+		exists(); 현재 파일이나 디렉토리가 있는지 여부
+		delete(); 파일 또는 디렉토리 삭제
+	-정보 메서드
+		canExecute(); 실행할 수 있는 파일인지 여부
+		getName(); 파일이름
+		getPath();  전체 경로
+		isFile(), isDirectory(); 파일/디렉토리 인지 여부
+		length();  파일 크기
+		list(); 디렉토리인 경우 포함된 파일의 문자열 배열
+		listFiles(); 디렉토리인 경우 포함된 파일을 배열로
+

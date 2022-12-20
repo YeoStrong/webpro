@@ -1,25 +1,26 @@
 package com.lec.quiz;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Friend {
+public class Member {
 	private String name;
 	private String address;
 	private String phone;
 	private Date birthday;
-	public Friend() {}
-	public Friend(String name, String address, String phone,  int y, int m, int d) {
+	public Member() {}
+	public Member(String name, String address, String phone, Date birthday) {
 		this.name = name;
 		this.address = address;
 		this.phone = phone;
-		birthday = new Date(new GregorianCalendar(y, m-1, d).getTimeInMillis());
+		this.birthday = birthday;
 	}
 	@Override
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
-		return "捞抚: " + name + "\n林家: " + address + "\n勤靛迄: " + phone + "\n积老: " + sdf.format(birthday) + "\n";
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd积");
+		return name + "\t" + phone + "\t" + sdf.format(birthday) + "\t" + address + "\n";
 	}
 	public String getName() {
 		return name;
