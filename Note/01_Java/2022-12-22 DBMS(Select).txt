@@ -1,0 +1,80 @@
+[ II ] Select문 가장 많이 쓰이는 DML(데이터 조작 언어) 질의어
+
+SELECT [DISTINCT] {*, column [Alias], ….}
+FROM 데이블명
+[WHERE condition]
+[ORDER BY {column, expression} [ASC|DESC]] ;
+
+SELECT : 원하는 컬럼 선택
+*	: 테이블의 모든 column 출력
+alias	: 해당 column에 대한 다른 이름 부여
+DISTINCT: 중복 행 제거 옵션
+FROM  : 원하는 데이터가 저장된 테이블 명을 기술
+WHERE : 조회되는 행을 제한하기 위한 조건 추가
+condition : column, 표현식, 상수 및 비교연산자
+ORDER BY:정렬을 위한 옵션 (ASC :오름차순이며 default, DECS 내림차순)
+
+
+1. SQL 문장 작성법
+	SQL 문장은 대소문자를 구별하지 않음(다만 자바에서 사용할 때를 생각하여 대문자로 작성 권장) 
+	SQL 문장은 한 줄 또는 여러 줄에 입력될 수 있음.
+	일반적으로 키워드는 대문자로 입력합니다
+	키워드를 제외한 다른 모든 단어, 즉 테이블 이름, 열 이름은 소문자로 입력하기도 함
+	명령어의 끝은 ;
+	주석처리는 --
+
+
+2. SQL 문장 실행
+	SELECT * FROM TAB; --scott이 소유하고 있는 table을 전부 보여줌
+	­ scott(사용자)가 소유한 테이블
+	SELECT * FROM dept; -- dept테이블 데이터 전체 보기
+	DESC dept;          -- dept테이블의 구조보기
+	­ not null : null값이 있으면 안 된다.
+	­ number(4) : 부서코드는 정수 4자리
+	­ number(7,2) ; 총자리수 7자리 중 소수점 이하는 2자리
+
+
+3. WHERE 조건과 비교연산자 : 같다(=), 크거나같다(>=) 작거나같다(<=) 다르다(<>, ^= , !=)
+
+
+4. 논리연산자 : AND, OR, NOT
+
+
+5. 산술표현식
+NULL값을 포함한 산술식의 결과는 NULL이 된다. NVL함수를 이용하면 개선 가능.
+
+
+6. 연결연산자 (||) ; 열이나 문자를 다른 열에 연결하는 연산
+
+
+7. 중복제거 DISTINCT ; DISTINCT를 사용하여 나타나는 결과는 기본적으로 오름차순 정렬
+
+
+8. SQL 연산자
+	DISTINCT 필드; 필드 중복제거
+	BETWEEN a AND b : a부터 b (a,b값 포함. a가 작은 값) 
+	IN(list)            : list의 값 중 어느 하나와 일치한다
+	LIKE pattern       : 검색하고자 하는 값을 정확히 모를 경우 pattern과 일치하는지를 검색하며 pattern에는 다음의 두가지 와일드카드가 사용.
+		% : 문자가 없거나, 하나 이상의 문자가 어떤 값이 와도 상관없음.
+		_ : 하나의 문자가 어떤 값이 와도 상관없음.
+	IS NULL                : null값을 가졌다
+	NOT BETWEEN a AND b : a와 b 사이에 있지 않다(a,b값 포함되지 않음)
+	NOT IN (list)            : list의 값과 일치하지 않음.
+	NOT LIKE pattern       : 문자형태가 pattern과 일치하지 않음.
+	NOT IS NULL(IS NOT NULL)     : null값을 갖지 않음.
+
+
+	이름에 %가 들어간 이름
+	SELECT ename FORM emp WHERE ename LIKE ‘%\%%’ ESCAPE ‘\’;  -- 특수기호 사용시 ESCAPE 활용
+
+
+9. 정렬을 위한 ORDER BY 절
+	ASC 오름차순. Default
+	DESC 내림차순
+	SELECT *  FROM emp ORDER BY SAL; -- 오름차순 정렬(기본) ASC
+	SELECT * FROM emp ORDER BY sal ASC; -- ASC 오름차순
+	SELECT * FROM emp ORDER BY sal DESC; -- 내림차순 정렬
+	SELECT ename, hiredate FROM emp ORDER BY hiredate DESC; -- 내림차순
+	SELECT ename, hiredate FROM emp ORDER BY hiredate; -- 오름차순
+	연봉이 작은 것부터 순서대로 출력(연봉이 같으면 입사일로 나중인 사람 순으로 정함)
+	SELECT ename, sal*12+NVL(comm, 0) 연봉 FROM emp ORDER BY 연봉, hiredate DESC;
