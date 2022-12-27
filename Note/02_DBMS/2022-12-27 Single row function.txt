@@ -1,0 +1,92 @@
+단일행함수
+함수들의 분류 : 숫자함수, 문자처리함수, 날짜함수, 형변환함수, NULL, etc
+
+0. DUAL 테이블과 SQL 함수 분류
+	(1) DUAL 테이블의 구조: DUAL은 테스트하기 위한 용도의 oracle 내장 객체, 한 행으로 출력
+	DUAL 테이블은 DUMMY라는 단 하나의 컬럼으로 구성
+	DUAL 테이블은 함수 실습에 사용.
+
+
+	1. 숫자 함수 : 숫자를 처리하는 함수. 절대값, 수학함수(sin, cos, tan…), 올림(ceil), 반올림(round), 내림(trunc), 나머지(mod) 등
+	(1) ABS(x) : 절대값
+	(2) COS(x) : COSINE 값을 반환
+	(3) EXP(x) : e(2.71828183……)의 x승
+	(4) FLOOR(x) : 소수점 아래를 버림
+	(5) LOG(x) : log값을 반환
+	(6) POWER(m,n) : m의 n승
+	(7) SIGN(n) : n<0이면 -1, n=0이면 0, n>0이면 1을 반환
+	(8 )SIN(x) : SINE값 반환
+	(9) TAN(x) : tangent값 반환
+	(10) ROUND(x) : 특정 자릿수에서 반올림
+	(11) ROUND(데이터, 반올림할 소수점 자리수) ; 반올림할 자리수가 음수인 경우 -1은 십단위. -2는 백단위
+	(12) TRUNC(x, n):n으로 지정한 자리수 이하를 버림
+	(13) MOD(x, n) : x를 n으로 나눈 나머지값
+
+
+	2. 문자처리함수
+	(1) LOWER(str) : 소문자로
+	(2) UPPER(str) : 대문자로
+	(3) INITCAP(str) : 첫 글자만 대문자로 나머지 글자는 소문자로
+	(4) CONCAT(str1, str2) : 문자 연결
+	(5) SUBSTR(str, 시작할위치, 추출할갯수) : 문자를 잘라 추출 (한글은 1byte), 시작할위치는 인덱스 아님
+                    				시작할 위치가 음수이면 끝에서부터 자리수를 셈
+	(6) SUBSTRB(str, 시작할위치,추출할갯수) : 문자를 잘라 추출 (한글은 3byte)
+	(7) LENGTH(str) : 문자길이 (한글은 1byte)
+	(8) LENGTHB(str) : 문자길이 (한글은 2~3byte)
+	(9) INSTR(str, 찾을글자, 시작위치, 몇번째발견 검색된 횟수) str에서 찾을글자를 몇번째 발견하는지
+	(10) LPAD, RPAD : 입력 받은 문자열과 기호를 정렬하여 특정 길이의 문자열로 반환
+	(11) TRIM : 잘라내고 남은 문자를 표시
+	(12) CHR : ASCII코드 값으로 SELECT CHR(65) FROM DUAL;
+	(13) ASCII : ASCII코드값을 문자로
+	(14) REPLACE : 문자열에서 특정문자를 변경
+
+
+	3. 날짜함수
+	(1) SYSDATE 시스템 저장된 현재 날짜를 반환
+	(2) MONTHS_BETWEEN 두 날짜 사이가 몇 개월인지를 반환
+	(3) ADD_MONTHS 특정 날짜에 개월 수를 더함
+	(4) NEXT_DAY 특정 날짜에서 최초로 도래하는 인자로 받은 요일의 날짜를 반환
+	(5) LAST_DAY 해당 달의 마지막 날짜를 반환
+	(6) ROUND 인자로 받은 날짜를 특정 기준으로 반올림
+	(7) TRUNC 인자로 받은 날짜를 특정 기준으로 버림
+	SELECT HIREDATE, ROUND(HIREDATE-3, 'MONTH')+18 첫월급날 FROM EMP; -- 월급날이 19일
+	SELECT HIREDATE, ROUND(HIREDATE-4, 'MONTH')+19 첫월급날 FROM EMP; -- 월급날이 20일
+	SELECT HIREDATE, ROUND(HIREDATE-5, 'MONTH')+20 첫월급날 FROM EMP; -- 월급날이 21일
+	...
+
+
+	4. 형변환함수 ; 오라클을 사용하다 보면 숫자, 문자, 날짜의 데이터 형을 다른 데이터형으로 변환해야 하는 경우가 생신다. 이럴때 사용하는 함수가 형변환 함수이다.
+	(1) TO_CHAR : 날짜형 혹은 숫자형을 문자형으로 변환
+	TO_CHAR(날짜데이터, ‘출력형식’);
+	SELECT SYSDATE, TO_CHAR(SYSDATE, 'YYYY-MM-DD') FROM DUAL;
+	­ YYYY 년도 4자리 표현 / YY 년도 2자리 표현
+	­ MM 월을 숫자로 표현 / MON 월을 알파벳으로 표현 / DD 일
+	­ DAY 요일 표현 / DY 요일을 약어로 표현
+	­ AM또는 PM / A.M또는 P.M.. 오전 오후 시각 표시 
+	­ HH12(12시간표현) HH24(24시간 표현) / MI 분표현 / SS 초표현
+
+	(2) TO_DATE : 문자형을 날짜형으로 변환
+	TO_DATE(‘문자’, ‘FORMAT’);
+	­ 날짜 형은 세기, 년도, 월, 일. 시간, 분. 초와 같이 날짜와 시간에 대한 정보를 저장
+	­ 오라클에서 기본 날짜 형식은 ‘YY/MM/DD'형식
+	­ 만일 년도를 4자리로 출력하려면 ‘YYYY/MM/DD' 형식으로 지정합니다. 
+
+	(3) TO_NUMBER : 문자형을 숫자형으로 변환
+	SELECT TO_NUMBER('20,000', '99,999') - TO_NUMBER('10,000', '99,999') FROM DUAL; -- TO_NUMBER 함수는 특정 데이터를 숫자형으로 변환해 주는 함수
+	산술 연산을 하려면 문자형을 숫자형으로 변환한 후에 실행
+
+
+	5. NULL을 다른 값으로 변환하는 NVL 함수
+	ex) SELECT ENAME, SAL, COMM, SAL*12+COMM, NVL(COMM, 0), SAL*12+NVL(COMM, 0) FROM EMP ORDER BY JOB;
+
+
+	6. 그외, 
+	(1) 사원테이블에서 부서번호가 20인 사원의 사원번호, 사원이름, 직업, 급여를 출력하되 급여 앞에 $를 붙이고 3자리마다 ,를 출력
+		SELECT empno, ename, job, sal, TO_CHAR(sal, ‘$999,9999’) FROM EMP WHERE deptno=20 ORDER BY sal DESC;
+	(2) EXTRACT ; 입력값인 날짜 데이터 타입에서 지정된 값을 추출하는 함수.
+		SELECT EXTRACT(YEAR FROM SYSDATE) FROM DUAL;
+		SELECT ENAME, HIREDATE, EXTRACT(MONTH FROM HIREDATE) FROM EMP WHERE DEPTNO=10;
+	(3) 사원테이블의 계층화
+		LEVEL : 계층적 질의문에서 검색된 결과에 대한 계층별로 레벨 표시
+		START WITH : 계층적인 출력 형식을 표현하기 위한 최상위 행
+		CONNECT BY PRIOR : 계층 관계의 데이터를 지정하는 컬럼
