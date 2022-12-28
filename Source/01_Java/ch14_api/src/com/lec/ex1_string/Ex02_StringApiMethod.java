@@ -19,7 +19,7 @@ public class Ex02_StringApiMethod {
 		System.out.println("10." + str4.indexOf("b", 3)); // 3번째 index부터 나오는 첫 b : 10.5
 		System.out.println("11." + str4.indexOf("cXa")); // 처음 나오는 cXa의 index : 11.2
 		System.out.println("12." + str4.indexOf("cXa", 9)); // 9번째부터 나오는 첫 cXa : 12.10
-		System.out.println("13." + str4.indexOf("@")); // 없으면 -1 : 13.-1
+		System.out.println("13." + str4.indexOf("@")); // 없으면 -1 : 13.15
 		System.out.println("14." + str1.equals(str2)); // 같은 String은 true 14.true
 		System.out.println("15." + str1.equalsIgnoreCase("abcxabc")); // 대소문자 구별 없이 비교 : 15.true
 		System.out.println("16." + str3.trim()); // 앞뒤space 제거 : 16.ja  va2

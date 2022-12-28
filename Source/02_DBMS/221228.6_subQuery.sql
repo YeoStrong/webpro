@@ -244,20 +244,37 @@ SELECT ENAME, JOB, SAL
     WHERE D.DEPTNO=E.DEPTNO
         AND E.DEPTNO=(SELECT DEPTNO FROM DEPT WHERE LOC='DALLAS');
 -- 16. EMP 테이블에서 King에게 보고하는 모든 사원의 이름과 급여
-
+SELECT W.ENAME, W.SAL
+    FROM EMP W, EMP M
+        WHERE W.MGR=M.EMPNO
+            AND W.MGR=(SELECT EMPNO FROM EMP WHERE ENAME='KING');
 -- 17. SALES부서 사원의 이름, 업무
-
+SELECT ENAME, JOB
+    FROM EMP E, DEPT D
+    WHERE E.DEPTNO=D.DEPTNO
+        AND E.DEPTNO=(SELECT DEPTNO FROM DEPT WHERE DNAME='SALES');
 -- 18. 월급이 부서 30의 최저 월급보다 높은 사원의 모든 필드
-
+SELECT * FROM EMP
+    WHERE SAL> (SELECT MIN(SAL) FROM EMP WHERE DEPTNO=30);
 -- 19.  FORD와 업무도 월급도 같은 사원의 모든 필드
-
+SELECT * FROM EMP
+    WHERE (JOB, SAL) = (SELECT JOB, SAL FROM EMP WHERE ENAME='FORD');
 -- 20. 이름이 JONES인 직원의 JOB과 같거나 FORD의 SAL 이상을 받는 사원의 정보를 이름, 업무, 부서번호, 급여
     -- 단, 업무별 알파벳 순, 월급이 많은 순으로 출력
-
+SELECT ENAME, JOB, DEPTNO
+    FROM EMP
+    WHERE JOB = (SELECT JOB FROM EMP WHERE ENAME='JONES')
+        OR SAL >= (SELECT SAL FROM EMP WHERE ENAME='FORD');
 -- 21. SCOTT 또는 WARD와 월급이 같은 사원의 정보를 이름,업무,급여
-
+SELECT ENAME, JOB, SAL
+    FROM EMP
+    WHERE SAL = (SELECT SAL FROM EMP WHERE ENAME='SCOTT')
+        OR SAL = (SELECT SAL FROM EMP WHERE ENAME='WARD');
 -- 22. CHICAGO에서 근무하는 사원과 같은 업무를 하는 사원들의 이름,업무
-
+SELECT ENAME, JOB
+    FROM EMP E, DEPT D
+    WHERE E.DEPTNO=D.DEPTNO
+        AND E.DEPTNO = (SELECT DEPTNO FROM DEPT WHERE LOC='CHICAGO');
 -- 23. 부서 평균 월급보다 월급이 높은 사원을 사번, 이름, 급여, 부서번호
 SELECT E.EMPNO, E.ENAME, E.SAL, E.DEPTNO
     FROM EMP E
@@ -268,7 +285,14 @@ SELECT E.EMPNO, E.ENAME, E.SAL, E.DEPTNO,
     FROM EMP E
     WHERE SAL > (SELECT AVG(SAL) FROM EMP WHERE DEPTNO=E.DEPTNO);
 -- 24. 업무별로 평균 월급보다 적은 월급을 받는 사원을 부서번호, 이름, 급여
-
+SELECT E.DEPTNO, E.ENAME, E.SAL
+    FROM EMP E
+    WHERE SAL < (SELECT AVG(SAL) FROM EMP WHERE DEPTNO=E.DEPTNO);
 -- 25. 적어도 한 명 이상으로부터 보고를 받을 수 있는 사원을 업무, 이름, 사번, 부서번호를 출력(단, 부서번호 순으로 오름차순 정렬)
-
+SELECT M.JOB, M.ENAME, M.EMPNO, M.DEPTNO
+    FROM EMP M
+    WHERE EXISTS (SELECT * FROM EMP WHERE M.EMPNO=MGR) 
+    ORDER BY DEPTNO;
 -- 26.  말단 사원의 사번, 이름, 업무, 부서번호
+SELECT ENAME, JOB, DEPTNO FROM EMP W
+        WHERE NOT EXISTS (SELECT * FROM EMP WHERE W.EMPNO=MGR);
