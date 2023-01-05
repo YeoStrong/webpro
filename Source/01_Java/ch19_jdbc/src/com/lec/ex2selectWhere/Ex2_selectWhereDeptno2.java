@@ -16,10 +16,10 @@ public class Ex2_selectWhereDeptno2 {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+		Scanner scan = new Scanner(System.in);
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
-		Scanner scan = new Scanner(System.in);
 		System.out.println("정보 출력을 원하는 부서의 부서 번호를 입력하세요: ");
 		int deptno = scan.nextInt();
 		String sql = "SELECT * FROM DEPT WHERE DEPTNO=" + deptno;
