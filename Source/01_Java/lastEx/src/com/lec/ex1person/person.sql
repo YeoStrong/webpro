@@ -44,7 +44,13 @@ SELECT *
     FROM (SELECT ROWNUM || '등' "등수", P.PNAME ||'(' || PNO || '번)' "이름(pNO)", JNAME "직업", KOR "국어(kor)", ENG"영어(eng)", MAT"수학(mat)", "총점"
         FROM PERSON P, JOB J, (SELECT pNAME, SUM(KOR+ENG+MAT) "총점" FROM PERSON GROUP BY pNAME ORDER BY "총점" DESC)A WHERE P.PNAME=A.PNAME 
             AND P.JNO=J.JNO
-            AND P.jNO=(SELECT jNO FROM JOB WHERE JNAME='가수'));
+            AND P.jNO=(SELECT jNO FROM JOB WHERE JNAME='배우'));
+            
+SELECT ROWNUM RANK, A.*
+  FROM (SELECT PNAME||'('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM
+            FROM PERSON P, JOB J
+            WHERE P.JNO=J.JNO AND JNAME='배우'
+            ORDER BY SUM DESC) A;
 
 
     
@@ -54,4 +60,11 @@ SELECT *
         FROM PERSON P, JOB J, (SELECT pNAME, SUM(KOR+ENG+MAT) "총점" FROM PERSON GROUP BY pNAME ORDER BY "총점" DESC)A WHERE P.PNAME=A.PNAME 
             AND P.JNO=J.JNO);
 COMMIT;
+
+
+SELECT ROWNUM RANK, A.*
+  FROM (SELECT PNAME||'('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM
+            FROM PERSON P, JOB J
+            WHERE P.JNO=J.JNO
+            ORDER BY SUM DESC) A;
     

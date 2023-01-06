@@ -1,13 +1,11 @@
 package com.lec.ex1person;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -60,7 +58,7 @@ public class PersonMng {
 					System.out.println("이름은? ");
 					String pname=sc.next();
 					pstmt.setString(1, pname);
-					System.out.println("직업은? ");
+					System.out.println("직업은[배우, 가수, 엠씨]? ");
 					String jname=sc.next();
 					pstmt.setString(2, jname);
 					System.out.println("국어점수는? ");
@@ -94,11 +92,11 @@ public class PersonMng {
 				}
 				break;
 			case "2": // 직업명받아 직업 출력
-				sql = "SELECT *\r\n" + 
-						"    FROM (SELECT ROWNUM || '등' \"등수\", P.PNAME ||'(' || PNO || '번)' \"이름(pNO)\", JNAME \"직업\", KOR \"국어(kor)\", ENG\"영어(eng)\", MAT\"수학(mat)\", \"총점\"\r\n" + 
-						"        FROM PERSON P, JOB J, (SELECT pNAME, SUM(KOR+ENG+MAT) \"총점\" FROM PERSON GROUP BY pNAME ORDER BY \"총점\" DESC)A WHERE P.PNAME=A.PNAME \r\n" + 
-						"            AND P.JNO=J.JNO\r\n" + 
-						"            AND P.jNO=(SELECT jNO FROM JOB WHERE JNAME=?))";
+				sql = "SELECT ROWNUM RANK, A.*" + 
+						"  FROM (SELECT PNAME||'('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM" + 
+						"            FROM PERSON P, JOB J" + 
+						"            WHERE P.JNO=J.JNO AND JNAME=?" + 
+						"            ORDER BY SUM DESC) A";
 				try {
 					// 2~6단계
 					conn = DriverManager.getConnection(url, "scott", "tiger");
@@ -107,17 +105,16 @@ public class PersonMng {
 					pstmt.setString(1, sc.next());
 					rs = pstmt.executeQuery();
 					if(rs.next()) { // 해당부서 사원 list를 출력
-						System.out.println("등수\t이름(pNO)\t\t직업\t국어(kor)\t영어(eng)\t수학(mat)\t총점");
+						System.out.println("rank\t pname(pNO)\t jname\t kor\t eng\t mat\t sum");
 						do {
-							int rn = rs.getInt("등수");
-							String pname = rs.getString("이름");
-							int pno = rs.getInt("pNO");
-							String jname = rs.getString("직업");
-							int kor = rs.getInt("국어(kor)");
-							int eng = rs.getInt("영어(eng)");
-							int mat = rs.getInt("수학(mat)");
-							int sum = rs.getInt("총점");
-							System.out.printf("%d등\t%s(%d번)\t%s\t%d\t%d\t%d\t%d", rn, pname, pno, jname, kor, eng, mat, sum);
+							int rn = rs.getInt("rank");
+							String pname = rs.getString("pname");
+							String jname = rs.getString("jname");
+							int kor = rs.getInt("kor");
+							int eng = rs.getInt("eng");
+							int mat = rs.getInt("mat");
+							int sum = rs.getInt("sum");
+							System.out.printf("%d\t%s\t\t%s\t%d\t%d\t%d\t%d\n", rn, pname, jname, kor, eng, mat, sum);
 						}while(rs.next());
 					}else {
 						System.out.println("해당 직업은 현재 없습니다.");
@@ -129,7 +126,7 @@ public class PersonMng {
 					// 7단계 close
 						try {
 							if(rs!=null)rs.close();
-							if(stmt!=null)stmt.close();
+							if(pstmt!=null)pstmt.close();
 							if(conn!=null)conn.close();
 						} catch (SQLException e) {
 							// TODO Auto-generated catch block
@@ -138,27 +135,27 @@ public class PersonMng {
 				}
 				break;
 			case "3":
-				sql = "SELECT *\r\n" + 
-						"    FROM (SELECT ROWNUM || '등' \"등수\", P.PNAME ||'(' || PNO || '번)' \"이름(pNO)\", JNAME \"직업\", KOR \"국어(kor)\", ENG\"영어(eng)\", MAT\"수학(mat)\", \"총점\"\r\n" + 
-						"        FROM PERSON P, JOB J, (SELECT pNAME, SUM(KOR+ENG+MAT) \"총점\" FROM PERSON GROUP BY pNAME ORDER BY \"총점\" DESC)A WHERE P.PNAME=A.PNAME \r\n" + 
-						"            AND P.JNO=J.JNO)";
+				sql = "SELECT ROWNUM RANK, A.*" + 
+						"  FROM (SELECT PNAME||'('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM" + 
+						"            FROM PERSON P, JOB J" + 
+						"            WHERE P.JNO=J.JNO" + 
+						"            ORDER BY SUM DESC) A";
 				try {
 					// 2~6단계
 					conn = DriverManager.getConnection(url, "scott", "tiger");
 					stmt = conn.createStatement();
 					rs	 = stmt.executeQuery(sql);
 					if(rs.next()) {
-						System.out.println("등수\t이름(pNO)\t\t직업\t국어(kor)\t영어(eng)\t수학(mat)\t총점");
+						System.out.println("rank\t pname(pNO)\t jname\t kor\t eng\t mat\t sum");
 						do {
-							int rn = rs.getInt("등수");
-							String pname = rs.getString("이름");
-							int pno = rs.getInt("pNO");
-							String jname = rs.getString("직업");
-							int kor = rs.getInt("국어(kor)");
-							int eng = rs.getInt("영어(eng)");
-							int mat = rs.getInt("수학(mat)");
-							int sum = rs.getInt("총점");
-							System.out.printf("%d등\t%s(%d번)\t%s\t%d\t%d\t%d\t%d", rn, pname, pno, jname, kor, eng, mat, sum);
+							int rn = rs.getInt("rank");
+							String pname = rs.getString("pname");
+							String jname = rs.getString("jname");
+							int kor = rs.getInt("kor");
+							int eng = rs.getInt("eng");
+							int mat = rs.getInt("mat");
+							int sum = rs.getInt("sum");
+							System.out.printf("%d\t%s\t\t%s\t%d\t%d\t%d\t%d\n", rn, pname, jname, kor, eng, mat, sum);
 						} while(rs.next());
 					}else {
 						System.out.println("등록된 정보가 존재하지 않습니다.");
