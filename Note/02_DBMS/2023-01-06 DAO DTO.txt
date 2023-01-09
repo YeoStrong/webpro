@@ -1,0 +1,12 @@
+1. DAO(Data Access Object)
+database의 date에 접근하기 위한 객체
+
+2. DTO(Data Transfer Object)
+VO라고도 함. 계층 간 데이터 교환을 위한 자바 빈즈(Java Beans)
+database 레코드의 데이터를 매핑하기 위한 데이터 객체.
+로직을 갖고 있지 않으며 data와 그 data에 접긍을 위한 getter, setter만 갖고 있음.
+
+3. VO(Value Object)
+VO는 DTO와 혼용해서 쓰이지만 미묘한 차이가 있음
+DTO와 VO의 공통점: 넣어진 데이터를 getter를 통해 사용하므로 주 목적은 같음
+DTO와 VO의 차이점: DAO는 가변적을 성격을 가진 클래스(Setter 활용), VO는 불변

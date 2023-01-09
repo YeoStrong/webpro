@@ -1,0 +1,88 @@
+1. Web
+(1) 하나의 사이트나 또는 다른 사이트와의 관계가 거미집처럼 복잡하게 얽혀 있는 것에 비유
+	IT에서는 WWW(world wide web)의 줄임말로 사용. 전 세계의 컴퓨터들을 연결하여 정보 공유
+
+(2) 웹이란 1개 이상의 사이트가 연결되어 있는 인터넷 서비스의 한가지 형태. 
+	인터넷이란, 네트워크가 연결되어 있는 형태. 이 인터넷 안에는 많은 서비스(기능)가 존재
+
+	-프로토콜(Protocol) : 네트워크상에서 약속한 통신규약 (Http, FTP, SMTP, POP, DHCP) 
+		-Http : HyperText Transfer Protocol 정보를 가져와 브라우저 화면상에서 봄
+		-FTP : File Transfer Protocol. 파일을 다운
+		-SMTP, POP : 메일 송수신 protocol
+		-DHCP : Dynamic Host Configuration Protocol 다이나믹하게 계속 사설 ip 분배해주는 하여 Web을 사용하도록 하는 protocol
+	-IP : 네트워크상에서 컴퓨터를 식별할 수 있는 주소
+	-DNS : IP주소를 인간이 쉽게 외우도록 맵핑한 문자열
+	-Port : IP주소가 컴퓨터를 식별할 수 있게 해준다면, Port번호는 해당컴퓨터의 구동되고 있는 프로그램을 구분할 수 있는 번호
+		-http://www.lec.com:80/abc/def/index.jsp
+			-http : 프로토콜
+			-www.tjoeunit.co.kr : 컴퓨터주소(DNS를 통한 IP주소로변경)
+			-80 : 기본적인 포트번호
+			-abc/def/index.jsp : information path
+
+
+
+2. HTML
+Hyper Text Markup Language의 약자, 웹문서를 기술하는 언어
+웹문서를 표현하기 위해 태그들로 구성
+
+
+
+3. CSS란
+Cascading Style Sheets의 약자, HTML문서를 디자인적으로 예쁘게 만들어 정보 전달을 좀더 효율적으로 하기 위해 만들어진 문서
+HTML은 정보를 가지고 있고, CSS는 화면상의 레이아웃등의 디자인을 컨트롤하는 문서
+
+
+
+4. JavaScript (동적인 내용) -> jQuery
+2,3,4는 client단 / 서버단 PG은 java (DB에 연결하거나 상황에 따라 달리 작동)
+cf) Ajax는 웹 페이지의 특정 부분(특정 태그 부분)를 업데이트하고 서버와 데이터를 교환하는 기술
+
+
+
+5. 기본적인 웹 표준 문서의 상호관계
+웹표준은 웹문서의 구조와 표현(디자인) 그리고 동작을 별도로 구분
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>첫 페이지</title>
+	<style>
+		body { 
+			background-color: #FFF0B5;/* RGB */
+			font-size:30pt;
+		}
+	</style>
+	<script>
+		name = prompt("What’s your name?","Hong, GilDong");
+		document.write(name+"~ Welcome<br>");
+	</script>
+</head>
+<body>
+	안녕하세요. <br>
+	오늘부터 웹표준 수업이 시작됩니다<br>
+	Hello, World
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>    
+    <title>첫 페이지</title>
+<link href="ex2.css" rel="stylesheet" type="text/css"/>
+<script src="ex2.js"></script>
+</head>
+<body>
+	안녕하세요. <br>
+	Hello, World
+</body>
+</html>
+(1) HTML 웹 문서의 구조, 정보
+(2) CSS : 표현(디자인) 담당
+(3) Java Script : 동작을 담당
+이렇게 3가지 요소가 유기적으로 결합하여 작동하게 되면, 웹 문서가 가벼워지고 유지보수 및 수정 시에도 간편하고 빨리 처리할 수 있다.
+
+
+
+6.웹 접근성을 높여주는 웹표준
+	웹 접근성이라는 의미는 어떤 브라우저를 사용하든지, 일반인이건 장애인이건, 어떤 기기에서든지 모든 사람이 해당 사이트를 얼마나 제대로 볼 수 있느냐를 의미한다
+	가장 많이 사용하는 브라우저를 기준으로 웹 사이트를 만든다고 해서 모든 브라우저에서 똑같은 화면이 나오는 것은 아니다. 사이트가 웹표준을 준수하지 않을 경우, 다른 브라우저에서는 의도하지 않게 엉뚱한 자리에 컨텐츠가 표시되거나 아예 화면에 표시되지 않을 수도 있다.

@@ -9,16 +9,12 @@ public class CustomerDto {
 	private String levelname;
 	private int needamount;
 	public CustomerDto() {}
-	public CustomerDto(String ctel, String cname, int cpoint, int camount, String levelname, int needamount) {
-		super();
-		this.ctel = ctel;
-		this.cname = cname;
-		this.cpoint = cpoint;
-		this.camount = camount;
-		this.levelname = levelname;
-		this.needamount = needamount;
-	}
-	public CustomerDto(int cid, String ctel, String cname, int cpoint, int camount, String levelname, int needamount) {
+//	public CustomerDto(String ctel, String cname) { // 회원가입용
+//		super();
+//		this.ctel = ctel;
+//		this.cname = cname;
+//	}
+	public CustomerDto(int cid, String ctel, String cname, int cpoint, int camount, String levelname, int needamount) { // 검색용
 		super();
 		this.cid = cid;
 		this.ctel = ctel;
@@ -30,8 +26,8 @@ public class CustomerDto {
 	}
 	@Override
 	public String toString() {
-		return "CustomerDto [cid=" + cid + ", ctel=" + ctel + ", cname=" + cname + ", cpoint=" + cpoint + ", camount="
-				+ camount + ", levelname=" + levelname + ", needamount=" + needamount + "]";
+		return cid + "\t" + ctel + "\t\t" + cname + "\t" + cpoint + "\t"
+				+ camount + "\t" + levelname + "\t" + needamount;
 	}
 	public int getCid() {
 		return cid;
