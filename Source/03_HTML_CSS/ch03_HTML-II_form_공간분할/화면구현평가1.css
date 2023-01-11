@@ -1,0 +1,12 @@
+﻿p {
+    margin:0;
+    text-align:center;
+}
+footer p {
+    margin: 0;
+    color: gray;
+    font-size: 10pt;
+}
+strong {
+    color : red;
+}
