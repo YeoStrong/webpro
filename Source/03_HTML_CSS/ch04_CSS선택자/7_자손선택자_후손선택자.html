@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap{
+            width: 600px;
+            margin:0 auto;
+            border:1px solid lightgray;
+        }
+        #wrap #header{ /*후손 선택자*/
+            overflow:hidden;
+        }
+        #wrap .logo{ /*후손 선택자*/
+            float:left;
+            padding: 10px 30px 10px 150px; /*상우하좌*/
+        }
+        #wrap .title{
+            float:left;
+            padding: 18px 150px 10px 30px;
+        }
+        div p{ /* 후손선택자(자손선택자 포함) */
+            font-size:22px;
+        }
+        div > p{ /* 자손선택자*/
+                 color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="logo">
+                <h1>LOGO</h1>
+            </div>
+            <div class="title">
+                <h2>OO 주식회사</h2>
+            </div>
+        </div> <!-- header -->
+        <div id="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in commodo odio. Curabitur vehicula, risus sed scelerisque rhoncus, diam felis rutrum dui, eu gravida enim est sed nulla. Donec eget bibendum erat. Suspendisse potenti. Aenean at tempus dolor, luctus feugiat nisl. Sed viverra, turpis non accumsan vulputate, felis orci sagittis lectus, at interdum orci nunc at ipsum. Mauris iaculis eleifend lectus, sit amet luctus magna. Aliquam lorem leo, scelerisque id bibendum a, vulputate quis massa. Quisque euismod ante sit amet egestas faucibus. Aliquam fermentum non ante ut tincidunt. Nam vel ornare diam, hendrerit eleifend lorem. Proin finibus ante vitae lacus semper, sit amet imperdiet nulla bibendum. Suspendisse nunc orci, blandit id mauris quis, tempor condimentum elit. Nulla nec consequat turpis. Nullam scelerisque eget mauris nec maximus. Vestibulum et dapibus justo.</p>
+            <ul>
+                <li><p>Phasellus lobortis cursus leo</p></li>
+                <li><p>Vestibulum nec tristique dolor</p></li>
+                <li><p>Praesent faucibus ultricies sem lobortis tincidunt</p></li>
+            </ul>
+        </div> <!-- content -->
+        <div id="footer">
+            <p>서울시 서대문구 대현동</p>
+        </div> <!-- footer -->
+    </div> <!-- wrap -->
+</body>
+</html>

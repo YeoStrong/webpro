@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap {
+            width: 450px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        header{
+            color:orange;
+        }
+        div ul{overflow:hidden;} /*수평으로 하고픈 태그 부모단*/
+        div ul li { /* block type의 태그를 수평으로 */
+            float:left;
+            list-style:none;
+            margin:2px;
+        }
+        div ul li img[src$='bmp']{
+            border: 3px solid blue;
+        }
+        div ul li img[src$='gif']{
+            border: 3px solid red;
+        }
+        div ul li img[src$='jpg']{
+            border: 3px solid yellow;
+        }
+        div ul li img[src$='png']{
+            border: 3px solid black;
+        }
+        footer{
+            color:darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <h1>자바 스크립트 책들</h1>
+        </header>
+        <div>
+            <ul>
+                <li><img src="0112_book/book.bmp" alt="파랑 테두리" /></li>
+                <li><img src="0112_book/book.gif" alt="빨강 테두리" /></li>
+                <li><img src="0112_book/book.jpg" alt="노랑 테두리" /></li>
+                <li><img src="0112_book/book.png" alt="검정 테두리" /></li>
+            </ul>
+        </div>
+        <footer><h3>서울시 OO구 OO동 OO XX빌딩 0층</h3></footer>
+    </div>
+</body>
+</html>

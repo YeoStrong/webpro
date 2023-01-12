@@ -1,0 +1,105 @@
+﻿﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        /*전체 레이아웃 잡기*/
+        #header, #content, #footer {
+            width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            text-align: center;
+            background-color: lightgray;
+            border: 1px solid gray;
+        }
+        #content > div, #header >div, #footer >div {
+            float:left;
+        }
+        #nav ul li {
+            float:left;
+            list-style:none;
+            margin:20px 40px;
+
+        }
+        #academy {
+            clear:both;
+        }
+        a {
+            text-decoration:none;
+            color:black;
+            font-size:30px;
+            font-weight:bold;
+        }
+
+        #header .left #footer .left, #header .right, #footer .right {
+            border: 1px solid gray;
+            background-color: lightgray;
+            width: 150px;
+            height: 150px;
+        }
+        .center {
+            width: 693px;
+            border: 1px solid gray;
+        }
+        content .center {
+            width: 693px;
+            height: 293px;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="left">
+        </div>
+        <div class="center">
+        </div>
+        <div class="right">
+        </div>
+    </div>
+    <div id="content">
+        <div class="left">
+        </div>
+        <div class="center">
+            <div id="nav">
+                <ul>
+                    <li><a href="#">menu1</a></li>
+                    <li><a href="#">menu2</a></li>
+                    <li><a href="#">menu3</a></li>
+                </ul>
+            </div>
+            <div id="academy">
+                <h3>풀스택 개발자 양성과정</h3>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula, turpis at gravida porttitor, mauris leo bibendum mauris, a dignissim ante nisi at purus. Ut fermentum facilisis mi et tincidunt.
+                </p>
+            </div>
+        </div>
+        <div class="right">
+            <ol>
+                <li>태그</li>
+                <li>전체(*)</li>
+                <li>id, class</li>
+                <li>속성</li>
+                <li>후손,자손(>)</li>
+                <li>동위</li>
+                <li>반응</li>
+                <li>상태</li>
+                <li>구조</li>
+                <li>문자</li>
+                <li>링크</li>
+                <li>부정</li>
+            </ol>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="left">
+        </div>
+        <div class="center">
+        </div>
+        <div class="right">
+        </div>
+    </div>
+</body>
+</html>
