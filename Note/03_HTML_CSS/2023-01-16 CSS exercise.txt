@@ -1,0 +1,22 @@
+800이라면 마진5씩이라면 안은 790
+패딩 마진 고려하여 사이즈 정하기
+content banner는 wrap으로 감쌈
+border 계산 싫으면 boxing-size=border box
+footer
+전체를 감싼게 div contain이라면
+<div>
+	<header>
+	<div>
+		<div id="content">
+		<div id="banner">
+
+	</div>
+	<footer>
+	<div id="background">
+</div>
+
+백그라운드가 container를 벗어나면안됨.
+그럼 부모가 포지션을 잡아야됨. 그럴때 쓰는게 relative type
+
+border 계산 귀찮으면 box-sizing 활용
+width:%활용
