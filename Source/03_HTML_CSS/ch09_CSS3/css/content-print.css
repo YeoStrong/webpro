@@ -1,0 +1,5 @@
+/* css/content-print.css (content printer용) */
+#wrap .content{
+    background-color: darkgreen;
+    padding: 10px 5px;
+}

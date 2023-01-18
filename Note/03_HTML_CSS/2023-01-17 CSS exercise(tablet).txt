@@ -1,0 +1,38 @@
+1. #header
+	­ p
+2. #nav_gnb
+	i. ul & li….
+	ii. ul & li….
+3. #section
+	­ #nav_lnb
+	ul과 li
+	­ #content_wrap <!-- margin-right:-100px;-->
+	#content
+		div : h1, img, p
+		div : h1, img, p
+		div : h1, img, p
+		div : ul li3개 – img 3개와 li 기사
+4. #footer
+	­ <p>태그 1개
+
+position, margin, padding 활용하여 sidebar
+ex)
+    /* * * * * * #section  * * *  * * *  */
+    #section{overflow:hidden; background-color:#e1e262;}
+    #section #nav_lnb{
+      float:left;
+      width:200px;
+    }
+    #section #nav_lnb ul li a{
+      display:block;
+      padding: 20px;
+      border-bottom: 1px dashed brown;
+      color:saddlebrown;
+      font-size:1.4em;
+      text-align:center;
+    }
+    /* * * * * * #section의 #centent_wrap * * *  * * *  */
+    #section #content_wrap{
+      float:left; width:100%;
+      margin-right:-200px; background-color:#fcffce;
+    }
