@@ -1,0 +1,151 @@
+3 조건문 - 기본적으로 java와 똑같음
+3.1 If 조건문
+3.2 If else 조건문
+3.3 중첩 조건문
+3.4 If else if 조건문
+3.5 switch 조건문
+3.6 삼항연산자
+	(불 표현식)? (참일 때 실행하는 문장) : (거짓일 때 실행하는 문장);
+
+3.7 짧은 조건문
+	짧은 조건문은 논리연산자의 특성을 조건문으로 사용한다. 
+	다음 논리합 연산자를 사용한 표현식은 뒤에 어떠한 값이 들어가도 항상 참이므로 우변을 실행하지 않는다.
+	true || OOO // 우변을 항상 실행하지 않는다.
+	false || XXX //우변을 항상 실행
+	<script>
+	        true || alert(‘실행될까요?... A’);
+ 	      false || alert(‘실행될까요?... B’);
+	</script>
+	<script>
+	        var input = Number(prompt('숫자를 입력하세요', '숫자'));
+	        input % 2 == 0 || alert('홀수입니다');
+	        input % 2 == 0 && alert('짝수입니다');
+	    </script>
+
+
+4 반복문
+
+4.1 배열
+var array = [273, 32, 103, 57, 52];
+※ 어떤 자료형도 배열 요소가 될 수 있다.
+<script>
+	var array = [273, 'String', true, function () { }, {}, [273, 103]];
+	alert(array);
+	alert(array[1]);
+    </script>
+※ 배열의 length속성과 push()메서드
+<script>
+	var array = [0,1,2,3,4];
+	alert('length of array : ' + array.length);
+	array.push(5); // arrray[array.lenth] = 5; 와 동일 push는 뒤에 추가 pop은 뒤 인덱스 값 제거
+	array.unshift(-1);  // 배열 제일 앞에 값을 추가 cf.  앞 인덱스 값 제거시 shift
+	alert('5 push 후 : ' +array);
+	alert('5 push 후 length of array : ' + array.length);
+	alert('3이 배열에 있는지 여부 :' + array.includes(3));
+</script>
+
+※ 문자열과 배열
+<script>
+        var a = 'abcde';
+        alert('length of array : ' + a.length);
+        alert(a[0]);
+        alert(a[0] + a[1] + a[2] + a[3] + a[4] + a[5]);
+    </script>
+
+4.2 while 반복문
+※ 1초동안 while문이 몇번 반복되는지 출력하는 자바스크립트 코드를 구현하시오.
+<script>
+        var value = 0;
+        var startTime = new Date().getTime();
+        while (new Date().getTime() < startTime + 1000) {
+            value++;
+        }
+        alert(value);
+    </script>
+
+4.3 do while 반복문
+<script>
+        var value = 0;
+        do {
+            alert(value + '번째 반복문');
+        } while (++value < 5);
+        alert(value);
+    </script>
+
+4.4 for 문
+<script>
+        var array = ['포도', '사과', '바나나', '망고'];
+        for (var i = 0 ; i < array.length; i++) {
+            alert(array[i]);
+        }
+        for (var i = array.length - 1; i >= 0 ; i--) {
+            alert(array[i]);
+        }
+    </script>
+※ 특이한 점
+<script>
+        var startTime = new Date().getTime();
+        for (var CPS = 0 ; new Date().getTime() < startTime + 1000 ; CPS++) { }
+        alert('초당 연산 횟수 : ' + CPS);
+    </script>
+
+4.5 for in 반복문
+	for(var i in array) { 
+}
+<script>
+        var array = ['포도', '사과', '바나나', '망고'];
+        for (var i in array) {
+            alert(array[i]);
+        }
+    </script>
+※ for-each문
+<script>
+        var arr = [273, 's', true, function () { alert(1); }];
+        // 1. 일반 for문
+        for (var idx = 0; idx < arr.length; idx++) {
+            document.write(idx + '번째 값은 ' + arr[idx]+'<br>');
+        }
+        document.write('<hr color="blue">');
+        // 2. for in문
+        for (var idx in arr) {
+            document.write(idx + '번째 값은 ' + arr[idx] + '<br>');
+        }
+        document.write('<hr color="red">');
+        // 3. forEach()함수
+        arr.forEach(function (data, i) {
+            document.write(i + '번째 값은 ' + data + ' &nbsp; &nbsp; ');
+            document.write(i + '번째 값은 ' + arr[i] + '<br>');
+        });
+        document.write('<hr>');
+        arr.forEach(function (data) {
+            document.write(data + '<br>');
+        });
+    </script>
+
+4.6 break 키워드 vs. continue 키워드
+※  break문과 continue문
+<script>
+        for (num = 1 ; num < 5 ; num++) {
+            if (num % 3 == 0)
+                break;
+            alert(num);
+        }
+    </script>
+<script>
+        for (num = 1 ; num < 5 ; num++) {
+            if (num % 3 == 0)
+                continue;
+            alert(num);
+        }
+    </script>
+
+<script>
+        for (var i=0 ; true ; i++){
+            alert(i + '번째 반복문입니다');
+            if (!confirm('계속 하시겠습니까?')) { //진행여부를 묻는 질문
+                break;
+            }
+        }
+        document.write(i + '까지 수행');
+    </script>
+

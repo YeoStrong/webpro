@@ -8,17 +8,28 @@
     </style>
     <script>
         function chk(){
-            // hint
+            let num1 = Number(frm.su1.value);
+            let num2 = Number(frm.su2.value);
+            let msg;
             if(!frm.su1.value){
                 alert('첫번째 수를 입력하세요');
                 frm.su1.focus();
                 return false;
             }else if(!frm.su2.value){
-                alert('첫번째 수를 입력하세요');
-                frm.su1.focus();
+                alert('두번째 수를 입력하세요');
+                frm.su2.focus();
                 return false;
+            }else if(num1>num2){
+                alert('첫 번째 수가' + (num1-num2) + ' 만큼 더 큽니다.');
+                msg = '<p>첫 번째 수가' + (num1-num2) + ' 만큼 더 큽니다.</p>'
+            }else if(num2>num1){
+                alert('두 번째 수가' + (num2-num1) + ' 만큼 더 큽니다.');
+                msg = '<p>두 번째 수가' + (num2-num1) + ' 만큼 더 큽니다.</p>'
+            }else if(num1=num2){
+                alert('두 수가 같습니다.');
+                msg = '<p>두 수가 같습니다.</p>'
             }
-            // 몇번째 수가 얼마 더 큰지 경고창과 화면에 출력
+            document.body.innerHTML += msg;
             return false;
         }
     </script>

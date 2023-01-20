@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        fun();
+        document.write(fun);
+        document.write(alert); //기본 내장함수는 코드를 볼 수 없음
+        function fun(){ // 선언적 함수
+            alert('함수 fun');
+        }
+        // 선언적 함수는 순서와 관계 없이 함수 사용 가능(익명함수는 변수취급이라 함수 정의하고 나서 그 아래부터 가능)
+        var fun = function(){alert('함수fun');}; // 익명함수
+        fun();
+    </script>
+</head>
+<body>
+
+</body>
+</html>
