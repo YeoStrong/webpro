@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        let person = {
+            name : '홍길동', // 속성변수
+            age : 20,
+            eat : function(food){
+                var msg = this.age + '살 ' + this.name + '님은 ' + food + '를 먹습니다.';
+                alert(msg);
+            },
+        };
+        // toString 구현 방식 : for-in문 이용/ for-of문
+        arr = [10,20,30]; // 배열출력
+        for(var idx in arr){
+            document.write(arr[idx] + '<br>');
+        }
+        // for(var data of arr){
+        //     document.write(data + '<br>');
+        // }
+        var output = '';
+        for(var key in person){
+            if( key != 'eat'){
+                output += key + ' : ' + person[key] + '<br>';
+            }
+        }
+        document.write(output);
+        output = '';
+        // person의 key(속성변수)를 배열keyList = ['name', 'age', 'eat']
+        var keyList = Object.keys(person);
+        for(var key of keyList){
+            if(key!='eat'){
+                output += key + ' : ' + person[key] + '<br>';
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

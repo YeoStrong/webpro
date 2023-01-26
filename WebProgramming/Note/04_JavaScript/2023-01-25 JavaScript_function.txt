@@ -138,3 +138,9 @@ decodeURIComponent(encodedURI);   대부분의 문자를 모두 디코딩
     </script>
 
 
+document.write를 이용하면 body에 작성한 것을 초기화 하고
+document.write만 출력.
+body를 유지하고 싶다면 document.body.innerHTML 이용
+
+java랑 배열의 성격이 달라서 3개짜리 배열을 만들고도 더 추가 가능
+그래서 arraylist가 없음.
