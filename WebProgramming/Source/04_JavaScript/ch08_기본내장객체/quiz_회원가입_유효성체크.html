@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0 auto;}
+        table{
+            text-align: center;
+            border: 2px solid #385d81;
+            margin : 40px auto;
+            padding : 20px 50px;
+            font-size: 1.2em;
+            width: 500px;
+        }
+        table tr input{
+            border: 2px solid #385d81;
+            height : 25px;
+            line-height: 25px;
+            margin : 10px 20px;
+        }
+        table tr:nth-child(5) input{
+            background-color: rgb(13, 133, 202);
+            color: white;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 10px;
+            margin : 10px 0px 10px 0px;
+            padding : 0 20px;
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        function check(){
+            var patternName = /[가-힣]{2,4}/;
+            var patternEmail = /^\w+@\w+(\.\w+){1,2}$/;
+            var patternPassword = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~`!@#$%^&*()_+=|\\\[\]\{\}?'"\.,:;\/]).{4,}$/
+            if(!patternName.test(frm.name.value)){
+                alert('이름을 정확히 입력해주세요.');
+                return false;
+            }else if(!patternEmail.test(frm.email.value)){
+                alert('메일을 정확히 입력해주세요.');
+                return false;
+            }else if(!patternPassword.test(frm.pw.value)){
+                alert('비밀번호를 양식에 맞춰서 작성해주세요.');
+                return false;
+            }else if(frm.pw.value!=frm.pwchk.value){
+                alert('비밀번호 확인이 일치하지 않습니다.')
+                return false;
+            }else {
+                return true;
+            }
+        };
+    </script>
+</head>
+<body>
+    <form action="" method="get" name="frm" onsubmit="return check()">
+        <table>
+            <tr>
+                <td>
+                    <label for="name">이 름</label>
+                </td>
+                <td>
+                    <input type="text" name="name"
+                        autofocus="autofocus" placeholder="특수문자와 숫자 못 와" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">메 일</label>
+                </td>
+                <td>
+                    <input type="text" name="email"
+                        placeholder="메일형식에 맞추세요"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="pw">비밀번호</label>
+                </td>
+                <td>
+                    <input type="password" name="pw" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="pw2">비밀번호</label>
+                </td>
+                <td>
+                    <input type="password" name="pwchk"  />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                        <input type="submit" value="회원가입" />
+                        <input type="reset" value="취소" />
+                        <input type="button" value="로그인" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
