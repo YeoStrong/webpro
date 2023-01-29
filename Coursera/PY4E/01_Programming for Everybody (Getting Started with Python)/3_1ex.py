@@ -4,7 +4,7 @@
 # You should use input to read a string and float() to convert the string to a number.
 #  Do not worry about error checking the user input - assume the user types numbers properly.
 hrs = input("Enter Hours:")
-rate_str = input("Enter hourly rate")
+rate_str = input("Enter hourly rate:")
 h = float(hrs)
 rate = float(rate_str)
 if 0 < h <= 40:
