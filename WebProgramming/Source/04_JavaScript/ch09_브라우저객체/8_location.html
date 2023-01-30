@@ -10,7 +10,7 @@
     </style>
     <script>
         var sec = 0;
-        setInterval(function(){
+        var id = setInterval(function(){
             sec++;
             document.body.innerHTML += '<h' + (6-sec) + '>' + sec + '초 지남<h' + (6-sec) + '>';
         }, 1000);

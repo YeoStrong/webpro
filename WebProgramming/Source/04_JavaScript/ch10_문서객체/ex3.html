@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0 auto; text-align: center;}
+        td{
+            width : 100px;
+            height : 200px;
+            /* background-color: red; */
+        }
+        body{
+            background-color: white;
+        }
+        h1{
+            font-size: 5em;
+            padding: 30px;
+        }
+    </style>
+    <script>
+        var td = document.getElementsByTagName('td');
+        var color = ['red', 'orange', 'yellow', 'green','blue','navy','violet','white'];
+        window.onload = function(){
+            for (var i=0 ; i<color.length-1 ; i++){
+                td[i].style.backgroundColor = color[i];
+            }
+        };
+        function mOver(n){ // 문서객체생성 방법 1번 이용
+            var h1 = document.createElement('h1');
+            var textNode = document.createTextNode('야호 거의 끝났다');
+            h1.appendChild(textNode);
+            h1.setAttribute('class', 'message');
+            document.body.appendChild(h1);
+            h1.style.color = color[n];
+            document.body.style.backgroundColor = 'black';
+        }
+        function mOut(){
+            var message = document.getElementsByClassName('message');
+            document.body.removeChild(message[0]);
+            document.body.style.backgroundColor = 'white';
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr onmouseout="mOut()">
+            <td onmouseover="mOver(0)"></td>
+            <td onmouseover="mOver(1)"></td>
+            <td onmouseover="mOver(2)"></td>
+            <td onmouseover="mOver(3)"></td>
+            <td onmouseover="mOver(4)"></td>
+            <td onmouseover="mOver(5)"></td>
+            <td onmouseover="mOver(6)"></td>
+        </tr>
+    </table>
+</body>
+</html>

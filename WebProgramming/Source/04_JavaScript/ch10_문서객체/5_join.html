@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function childOpen(){
+            var child = window.open('5_confirm.html','','width=600,height=600,left=100');
+            if(!child){
+                alert('팝업 차단 해제해주세요.')
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>아이디 <input type="text" id="id"><button onclick="childOpen()">중복확인</button></p>
+    <input type="submit" value="회원가입">
+</body>
+</html>
