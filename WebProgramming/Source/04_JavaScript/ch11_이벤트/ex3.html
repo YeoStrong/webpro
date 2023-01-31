@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {
+            width:600px;
+            margin : 10px auto;
+            background-color: darkgreen;
+        }
+        td {background-color: white;padding:50px; text-align: center; font-size: 3em;}
+        
+    </style>
+    <script>
+        window.onload = function(){
+            var tds = document.getElementsByTagName('td');
+            var msg = document.getElementsByTagName('b')[0];
+            var d = 4;
+            tds[d].style.backgroundColor = 'yellow';
+            window.onkeyup = function(){
+                var key = event.keyCode;
+                switch(key){
+                    case 37:
+                        if(d%3==0){
+                            return;
+                        }else{
+                            d--;
+                        }break;
+
+                    case 38:
+                        if(d<3){
+                            return;
+                        }else{
+                            d -= 3;
+                        }break;
+
+                    case 39:
+                        if(d%3==2){
+                            return;
+                        }else{
+                            d++;
+                        }break;
+
+                    case 40:
+                        if(d>=6){
+                            return;
+                        }else{
+                            d += 3;
+                        }break;
+                        // 다른거 누르면 아무것도 안함.
+                        return;
+                }
+                for(var i=0 ; i<tds.length ; i++){
+                    tds[i].style.backgroundColor = 'white';
+                }
+                tds[d].style.backgroundColor = 'yellow';
+                msg.innerHTML = d;
+            };
+        };
+    </script>
+</head>
+<body>
+    <table>
+        <tr><td>0</td><td>1</td><td>2</td></tr>
+        <tr><td>3</td><td>4</td><td>5</td></tr>
+        <tr><td>6</td><td>7</td><td>8</td></tr>
+    </table>
+    <p>현위치 : <b>4</b></p>
+</body>
+</html>
