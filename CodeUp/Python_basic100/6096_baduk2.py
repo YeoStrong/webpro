@@ -15,3 +15,4 @@ for i in range(n) :
             d[int(x)][j]=1
         else :
             d[int(x)][j]=0
+        print(d[int(x)][int(y)])
