@@ -5,6 +5,7 @@ debugger; // 일시중지 하면서 객체 상태를 모니터링
 subObj.__proto__ = superObj;
 
 console.log(subObj.superVal);
+console.log(subObj.subVal);
 subObj.superVal = 'subObj에서 수정';
 
 console.log('수정 후 subObj.superVal :', subObj.superVal);
