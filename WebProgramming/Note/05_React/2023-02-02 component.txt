@@ -1,0 +1,112 @@
+Component 생성
+1. class를 이용해 생성
+ex)
+class App extends Component{
+  render(){
+    return (
+      <div className="App">
+        Hello, React !!
+        <Subject></Subject>
+        <TOC></TOC>
+        <Content></Content>
+      </div>
+    );
+  }
+}
+
+2. Props : react의 props는 read-only이다. props값을 바꾸려고 할 경우 error 발생.
+import './App.css';
+import React, {Component} from 'react'
+// https://reactjs.org/docs/components-and-props.html 참조
+class App extends Component{
+  render(){
+    return (
+      <div className="App">
+        <h1>Hello, React!!</h1>
+        <hr/>
+        <Subject title="1. WEB" sub="world wide web!!"/>
+        <Subject title="2. React" sub="For UI"/>
+        <TOC/>
+        <Content title="HTML" desc="HTML is HyperText Markup Language."></Content>
+      </div>
+    );
+  }
+}
+class Subject extends Component{ // 이부분은 jsx임. create-react-app이 jsx를 js로 변경
+  render(){
+    return(
+      <header>
+        <h1>{this.props.title}</h1>
+        {this.props.sub}
+        <hr/>
+      </header>      
+    );
+  }
+}
+
+
+3. 컴포넌트를 파일로 분리하기
+-----App.js-----
+import './App.css';
+import React, {Component} from 'react';
+import TOC from "./components/TOC";
+import Content from "./components/Content";
+import Subject from "./components/Subject";
+class App extends Component{
+  render(){
+    return (
+      <div className="App">
+        <h1>Hello, React!!</h1>
+        <hr/>
+        <Subject title="1. WEB" sub="world wide web!!"/>
+        <Subject title="2. React" sub="For UI"/>
+        <TOC/>
+        <Content title="HTML" desc="HTML is HyperText Markup Language."></Content>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+-----Subject.js-----
+import React, {Component} from 'react';
+
+class Subject extends Component{ // 이부분은 jsx임. create-react-app이 jsx를 js로 변경
+    render(){
+      return(
+        <header>
+          <h1>{this.props.title}</h1>
+          {this.props.sub}
+          <hr/>
+        </header>      
+      );
+    }
+  }
+export default Subject;
+
+
+4. State와 key
+<compoent props_name=”props_value”>
+Props : 사용자 입장에서 component를 사용할 때 필요한 데이터
+State : props값에 따라 내부에서 구현에 필요한 데이터
+
+5 이벤트 설치
+- HTML과는 약간 다르다.
+ex)
+<button onClick={activateLasers}>
+  Activate Lasers
+</button>
+- React는 false를 반환해도 기본 동작을 방지할 수 없음. preventDefault() 이용.
+
+
+6. bind 설명
+var obj = {name : 'hong'};
+function bindTest(){
+	console.log(this.name);
+}
+bindTest(); // 결과가 undefind
+var bindTest2 = bindTest.bind(obj);
+bindTest2(); // 결과가 hong
+
+
