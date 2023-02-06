@@ -1,0 +1,25 @@
+linux: vmware나 virtual box같은 가상머신 설치 후 그 위에 깔기(현재 운영체제를 유지하고 싶다면)
+bashrc : path 설정
+source .bashrc : bashrc안에 선언된 시스템 변수 적용
+linux에서는 tar 명령어 사용해 tar압축파일 해제
+
+<jsp 동작 원리>
+브라우저에서 http://127.0.0.1:8090/ch02_semiJSP/hello.jsp
+
+-소스폴더
+ : C:\Users\EZEN 203\Desktop\YeosongYoon\WebProgramming\Source\06_jsp\ch02_semiJSP\WebContent\hello.jsp
+
+-실행폴더 (실행은 톰캣에 의해)
+ : C:\Users\EZEN 203\Desktop\YeosongYoon\IDE\apache-tomcat-9\wtpwebapps\ch02_semiJSP에
+   소스 폴더의 webContent폴더의 내용을 복사
+
+- jsp를 서블릿(웹에서 구동되는 자바)으로 바꾸는 폴더
+ : C:\Users\EZEN 203\Desktop\YeosongYoon\IDE\apache-tomcat-9\work\Catalina\localhost\ch02_semiJSP\org\apache\jsp\hello_jsp.java
+
+WAS : Web Application Server(apache tomcat 사용 중)
+
+<%	%> : 스크립트릿
+<%@	%> : 지시자
+<%=	%> : 표현식
+<%@ include file=   %> : 그 파일을 그대로 포함시킴(<!DOCTYPE html>부터 그야말로 그대로)
+<%!	%> : 선언부(맨 처음 수행), 변수나 메소드를 선언
