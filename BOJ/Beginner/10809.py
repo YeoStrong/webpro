@@ -1,3 +1,4 @@
 s = input()
-for i in range(len(s)) :
-    print(s.find(s[i]))
+alpha = 'abcdefghijklmnopqrstuvwxyz'
+for i in range(len(alpha)) :
+    print(s.find(alpha[i]), end=" ")

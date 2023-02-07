@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>*{text-align: center;}</style>
+<script>
+function check(){
+	if(form.su1.value>form.su2.value){
+		alert('두 번째 수가 더 크거나 같아야 합니다.');
+		return false;
+	}else
+		return true;
+}
+</script>
+</head>
+<body>
+	<form name = "form" action="6_su2guguout.jsp" method="get" onsubmit= "return check()">
+		<p>단수: <input type="number" name="su1" required="required"> 단 ~ <input type="number" name="su2" required="required"> 단까지</p>
+		<p><input type="submit" value="구구단 출력"></p>
+	</form>
+</body>
+</html>
