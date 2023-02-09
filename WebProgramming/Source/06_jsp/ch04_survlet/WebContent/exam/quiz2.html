@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function(){
+		document.querySelector('form').onsubmit = function(){
+			var name = document.getElementById('name');
+			var address = document.getElementById('address');
+			if(!name.value){
+				alert("이름을 입력해주세요");
+				return false;
+			}else if(!address.value){
+				alert("주소를 입력해주세요");
+				return false;	
+			}
+		};
+	};
+</script>
+</head>
+<body>
+	<h2>개인정보</h2>
+	<form action="../Quiz2" method="POST">
+		<p>이름<input type="text" id="name" name="name"></p>
+		<p>주소<input type="text" id="address" name="address"></p>
+		<input type="submit" value="확인">
+	</form>
+</body>
+</html>

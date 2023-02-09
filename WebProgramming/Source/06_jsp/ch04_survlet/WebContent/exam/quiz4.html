@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script>
+	var col0 = document.getElementsByName('color')[0];
+	var col1 = document.getElementsByName('color')[1];
+	var col2 = document.getElementsByName('color')[2];
+	var col3 = document.getElementsByName('color')[3];
+	var col4 = document.getElementsByName('color')[4];
+	var col5 = document.getElementsByName('color')[5];
+	var col6 = document.getElementsByName('color')[6];
+	var colArrG = [col0, col1, col2, col3, col4, col5, col6];
+	var col7 = document.getElementsByName('color')[7];
+	var col8 = document.getElementsByName('color')[8];
+	var col9 = document.getElementsByName('color')[9];
+	var col10 = document.getElementsByName('color')[10];
+	var col11 = document.getElementsByName('color')[11];
+	var col12 = document.getElementsByName('color')[12];
+	var col13 = document.getElementsByName('color')[13];
+	var colArrP = [col7, col8, col9, col10, col11, col12, col13];
+	var chkG = 0;
+	var chkP = 0;
+	window.onload = function(){
+		document.getElementById('getF').onsubmit = function(){
+			for(var i=0 ; colArrG.length ; i++){
+				if(colArrG[i].checked){
+					chkG += 1;
+				}
+			}
+			if(chkG==0){
+				alert('색을 선택하세요');
+				return false;
+			}
+		};
+		
+		document.getElementById('postF').onsubmit = function(){
+			for(var i=0 ; colArrP.length ; i++){
+				if(colArrP[i].checked){
+					chkP += 1;
+				}
+			}
+			if(chkP==0){
+				alert('색을 선택하세요');
+				return false;
+			}
+		};
+	};
+</script>
+<body>
+	<form action="../Quiz4" method="get" id="getF">
+	<fieldset>
+		<legend>배경색 선택(GET방식)</legend>
+		<input type="radio" name="color" value="red">빨강
+		<input type="radio" name="color" value="orange">주황
+		<input type="radio" name="color" value="yellow">노랑
+		<input type="radio" name="color" value="green">초록
+		<input type="radio" name="color" value="blue">파랑
+		<input type="radio" name="color" value="navy">남색
+		<input type="radio" name="color" value="purple">보라
+		<input type="submit" value="선택확인">
+	</fieldset>
+	</form>
+	<form action="../Quiz4" method="post" id="postF">
+	<fieldset>
+		<legend>배경색 선택(POST방식)</legend>
+		<input type="radio" name="color" value="red">빨강
+		<input type="radio" name="color" value="orange">주황
+		<input type="radio" name="color" value="yellow">노랑
+		<input type="radio" name="color" value="green">초록
+		<input type="radio" name="color" value="blue">파랑
+		<input type="radio" name="color" value="navy">남색
+		<input type="radio" name="color" value="purple">보라
+		<input type="submit" value="선택확인">
+	</fieldset>
+	</form>
+</body>
+</html>

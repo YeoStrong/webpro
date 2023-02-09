@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		@charset "UTF-8";
+		#joinForm_wrap {width:430px; margin: 10px auto; border: 1px solid #D4A190; padding:20px;}
+		#join_title{
+			width:400px;            	margin:10px auto;
+			padding-bottom:20px;     	border-bottom:1px solid #D4A190;
+			color:#A47160;          	font-size:1.5em;
+			text-align:center;       	font-weight:bold;
+		}
+		#joinForm_wrap table{margin:0 auto; color:#A47160;}
+		#joinForm_wrap table tr{height:40px; }
+		#joinForm_wrap table th{
+			width:120px;        	font-size:0.9em;
+			color:#3F3F48;      	text-align:left;    	padding-left:10px;
+		}
+		#joinForm_wrap table td {width: 300px;}
+		.name, .id, .pw, .pwChk, .birth, .email, .mailSend {
+			border: 1px solid #D4A190; height:20px;	width:95%; padding:3px;
+		}
+		.mailSend  {height: 60px;}
+		.joinBtn_style {
+			color: #ffffff;        	background: #A47160;
+			border:0;               outline: none;
+			width:32%;              padding:5px 0; 
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			document.querySelector('form').onsubmit = function(){
+				
+			};
+		};
+	</script>
+</head>
+<body>
+	<form action="../join" method="post" id="joinForm_wrap">
+		<table>
+			<caption id="join_title">회원가입</caption>
+			<tr>
+				<th>이름</th>
+				<td><input type="text" name="name" class="name"></td>
+			</tr>
+			<tr>
+				<th>아이디</th>
+				<td><input type="text" name="id" class="id"></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="password" name="pw" class="pw"></td>
+			</tr>
+			<tr>
+				<th>비밀번호확인</th>
+				<td><input type="password" name="pw" class="pw"></td>
+			</tr>
+			<tr>
+				<th>생년월일</th>
+				<td><input type="date" name="birth" class="birth"></td>
+			</tr>
+			<tr>
+				<th>취미</th>
+				<td>
+					<input type="checkbox" name="hobby">독서
+					<input type="checkbox" name="hobby">요리
+					<input type="checkbox" name="hobby">운동
+					<input type="checkbox" name="hobby">취침
+				</td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td>
+					<input type="radio" name="gender">남자
+					<input type="radio" name="gender">여자
+				</td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td><input type="email" name="email" class="email"></td>
+			</tr>
+			<tr>
+				<th>메일수신</th>
+				<td>
+					<select multiple="multiple" class="mailSend">
+						<option>광고</option>
+						<option>배송</option>
+						<option>공지</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="가입하기" class="joinBtn_style">
+					<input type="reset" value="다시하기" class="joinBtn_style">
+					<button onclick="history.back()" class="joinBtn_style">뒤로가기</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
