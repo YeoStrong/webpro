@@ -25,4 +25,3 @@
 		</div>
 	</footer>
 </body>
-</html>

@@ -1,0 +1,33 @@
+WebContent 루트에는 아무것도 안놓음
+그러나 index.~~는 놓기도 함.(index니까)
+web.xmlf source에 있는 파일들만 놓을 수 있다
+나머지는 WebContent에 폴더를 만들고 넣어놓음
+
+적어도 하나를 선택하세요. 동의합니다를 선택하세요 :
+window.onload = function(){
+		document.querySelector('form').onsubmit = function(){
+			var hobby = document.querySelectorAll('input[type=checkbox]');
+			var checkedCnt = 0;
+			var checkedHobby = '';
+			for(var i=0 ; i<hobby.length ; i++){
+				checkedCnt += hobby[i].checked;
+			} // for
+			if(!checkedCnt){
+				alert('취미를 한 개 이상 선택하셔야 합니다.');
+				return false;
+			}
+		};
+	};
+
+form태그에 아무것도 안넣으면 action="", method="get"과 같음
+value를 설정하지 않으면 그대로 넘어감. value를 설정하면 value값 넘어감
+
+service 함수 : @override된 함수이며 doGet(), doPost() 실행되지 않고 service() 실행
+그래서 service함수는 많이 안 씀.
+
+안 쓰는 프로젝트를 닫아놓지 않으면 무조건 메모리에 올라가서
+나중에는 JSP를 할 수 없을 정도가 됨.
+프로젝트가 열려만 있으면 톰캣을 킬 때 전부 올림.
+
+처음 웹 어플리케이션 실행 될 때 contextInitialized()실행 -> 선처리작업 -> init()메소드 실행 -> doGet()이나 doPost() 실행 
+종료될 때 Destroye()실행 -> 후처리작업 -> contextDestroyed()실행
