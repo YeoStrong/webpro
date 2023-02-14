@@ -19,8 +19,6 @@
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String birth = request.getParameter("birth");
-		// Date birthDate = Date.valueOf(request.getParameter("birth"));
-		// Timestamp birthTimestamp = Timestamp.valueOf(request.getParameter("birth")+" 00:00:00");
 		Date birthDate = null;
 		Timestamp birthTimestamp = null;
 		if(birth!=null && !birth.equals("")){
@@ -47,14 +45,10 @@
 		}else {
 			mailresult ="모두 거부";
 		}
-		response.setContentType("text/html;charset=utf-8");
+		session.setAttribute("id", id);
 		
 	%>
-	<script>
-		alert('<%=name%>님 회원가입 완료되었습니다. 감사합니다.');
-		location.href = '<%=conPath%>/member/login.jsp';
-	</script>
-	<%-- <jsp:include page="../member/header.jsp"/>
+	<jsp:include page="../member/header.jsp"/>
 	<div id='joinForm_wrap'>
 		<div id='join_title'>회원가입정보</div>
 		<h2>이름 : <%= name %></h2>
@@ -70,7 +64,6 @@
 		<input type="button" value="로그인" class="joinBtn_style" 
 											onclick="location.href='<%=conPath%>/member/login.jsp'">
 	</div>
-	<%@ include file="footer.jsp" %>
-	<jsp:include page="../member/footer.jsp"/> --%>
+	<jsp:include page="../member/footer.jsp"/>
 </body>
 </html>
