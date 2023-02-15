@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<script>
+	window.onload = function(){
+		document.querySelector('form').onsubmit = function(){
+			var grade = document.getElementById('grade');
+			var sClass = document.getElementById('sClass');
+			var score = document.getElementById('score');
+			if(grade.value>6 || grade.value<1){
+				alert('학년을 정확히 입력하세요');
+				return false;
+			}else if(sClass.value!='A' && sClass.value!='B' && sClass.value!='C'){
+				alert('반을 정확히 입력하세요');
+				return false;
+			}else if(score.value>100 || score.value<0){
+				alert('점수를 정확히 입력하세요');
+				return false;
+			}
+		};
+	};
+</script>
+</head>
+<body>
+	<form action="step6.jsp" method="post">
+		<p>학번 <input type="text" name="sNo" id="sNo" required="required"></p>
+		<p>이름 <input type="text" name="name" id="name" required="required"></p>
+		<p>학년 <input type="number" name="grade" id="grade" required="required"></p>
+		<p>반 <input type="text" name="sClass" id="sClass" required="required"></p>
+		<p>점수 <input type="number" name="score" id="score" required="required"></p>
+		<p><input type="submit" value="입력"></p>
+	</form>
+</body>
+</html>

@@ -13,8 +13,11 @@ sum = 0
 for i in a :
     if i == "" :
         continue
-    elif i == 'O' :
-        
+    for j in i :
+        if i == 'O'*j :
+            tempsum = j*(j+1)/2
+            sum += tempsum
+print(sum)
 # if a[i] > O*~~
 # O = 1
 # OO = 1 + 2
