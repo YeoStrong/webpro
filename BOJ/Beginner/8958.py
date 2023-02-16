@@ -7,18 +7,21 @@
 # OX퀴즈의 결과가 주어졌을 때, 
 # 점수를 구하는 프로그램을 작성하시오.
 n = int(input())
-a = input().split('X')
 sum = 0
-# print('O'*4)
-for i in a :
-    if i == "" :
-        continue
-    for j in i :
-        if i == 'O'*j :
-            tempsum = j*(j+1)/2
-            sum += tempsum
-print(sum)
-# if a[i] > O*~~
+for _ in range(n) :
+    a = input().split('X')
+    for i in a :
+        if i == "" :
+            continue
+        else :
+            for j in range(1, 80) :
+                if i == 'O'*j :
+                    tempsum = j*(j+1)/2
+                    sum += tempsum
+    print(int(sum))
+    sum = 0
+
+# if a[i] == O*~~
 # O = 1
 # OO = 1 + 2
 # OOO = 1 + 2 + 3
