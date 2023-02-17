@@ -5,11 +5,11 @@
 # 그 다음 서로 다른 값이 몇 개 있는지 출력하는 프로그램을 작성하시오.
 
 a = []
-n = 0
-b = []f
+b = []
 for _ in range(10):
     a.append(input())
 a = list(map(int, a))
-print(a)
 for i in a:
-    42 % i
+    b.append(int(i) % 42)
+b = list(set(b))
+print(len(b))

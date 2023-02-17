@@ -12,7 +12,7 @@
 			document.querySelector('form').onsubmit = function(){
 				var pw = document.getElementById('pw');
 				var pwChk = document.getElementById('pwChk');
-				var patternMail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/; // macth함수 사용
+				var patternMail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/; // match함수 사용
 				var email = document.getElementById('email');
 				var mailSend = document.querySelector('select[name="mailSend"]');
 				var mailOption = mailSend.querySelectorAll('option');
