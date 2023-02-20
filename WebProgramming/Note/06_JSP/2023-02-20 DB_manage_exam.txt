@@ -1,0 +1,29 @@
+session을 Dto로 받았으면 login 상태에 따라 header를 바꿀 때
+CustomerDto customer = (CustomerDto)session.getAttribute("customer");
+	if(customer == null){
+	로그인 전 헤더들
+	}else{
+	로그인 후 헤더들
+	}
+
+
+생년월일을 넣지 않을 수도 있기 때문에(넣어도 안넣어도 상관 X였을 시)
+일단 tempBirth로 받는다.
+그다음 로그인 확인할 때
+String tempBirth = request.getParameter("tempBirth"); // "" or "1111-11-11"
+if(!tempBirth.equals("")){
+	dto.setCbirth(Date.valueOf(tempBirth));
+	}
+
+equals를 이용할 시 앞의 값이 null일 경우 nullpointerException 에러가 나므로
+성별을 예로 든다면
+	<th>성별</th>
+	<td>
+	<%if("m".equals(cgender)){ %>  <<<<<------ 
+	<input type="radio" name="cgender" value="m" checked="checked">남
+	<input type="radio" name="cgender" value="f">여
+	...
+cgender.equals("m") 대신
+"m".equals(cgender) 를 사용하면 된다.
+
+
