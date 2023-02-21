@@ -98,10 +98,8 @@ public class CustomerDao {
 			System.out.println("회원가입 실패 : " + dto.toString());
 		} finally {
 			try {
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());

@@ -101,7 +101,6 @@ public class EmpDao {
 				System.out.println(e.getMessage());
 			}
 		}
-		
 		return dtos;
 	}
 }
