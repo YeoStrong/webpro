@@ -17,6 +17,9 @@
 		BoardDto dto = bDao.getBoardOneLine(num);
 		/* pageNum 추가 */
 		String pageNum = request.getParameter("pageNum");
+		if(pageNum==null){
+			pageNum="1";
+		}
 		if(dto==null){
 			response.sendRedirect(conPath+"/board/list.jsp");
 		}else{
@@ -42,7 +45,7 @@
 					<button onclick="location.href='<%=conPath%>/board/deleteForm.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">
 						삭제
 					</button>
-					<button>답변</button>
+					<button onclick="location.href='<%=conPath%>/board/writeForm.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">답변</button>
 					<button onclick="location.href='<%=conPath%>/board/list.jsp?pageNum=<%=pageNum%>'">목록</button>
 			</tr>
 		</table>

@@ -387,4 +387,82 @@ public class BoardDao {
 		}
 		return result;
 	}
+	// 8. 답변글 저장 전 단계(엑셀에서 a단계)
+	private void preReplyStep(int ref, int re_step) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "UPDATE BOARD SET RE_STEP = RE_STEP+1 " + 
+				"        WHERE REF = ? AND RE_STEP > ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ref);
+			pstmt.setInt(2, re_step);
+			int result = pstmt.executeUpdate();
+			System.out.println("답변글" + result + "개 조정됨");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn	!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	// 9. 답변글 쓰기
+	public int reply(BoardDto dto) {
+		// num, writer, subject, content, email, pw, ref, re_step, re_indent, ip
+		// 원글에 대한 정보 : num, ref, re_step, re_indent
+		// 사용자로부터 입력받는 내용 : writer, subject, content, email, pw
+		// request.getRemoteAddr() 함수로부터 : ip
+		preReplyStep(dto.getRef(), dto.getRe_step()); // 답글 쓰기 전 단계 실행
+		int result = FAIL;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, EMAIL, PW, REF, RE_STEP, RE_INDENT, IP) " + 
+				"    VALUES ((SELECT NVL(MAX(NUM),0)+1 FROM BOARD), ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getWriter());
+			pstmt.setString(2, dto.getSubject());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getEmail());
+			pstmt.setString(5, dto.getPw());
+			pstmt.setInt(6, dto.getRef());
+			pstmt.setInt(7, dto.getRe_step() + 1);
+			pstmt.setInt(8, dto.getRe_indent() + 1);
+			pstmt.setString(9, dto.getIp());
+			result = pstmt.executeUpdate();
+			System.out.println(result==SUCCESS? "답변 글쓰기 성공" : "답변 글쓰기 실패");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+			System.out.println("답글 쓰다 예외 발생 : " + dto);
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn	!=null) conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
