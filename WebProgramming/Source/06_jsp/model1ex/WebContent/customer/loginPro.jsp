@@ -3,6 +3,7 @@
 <%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String conPath = request.getContextPath();%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,13 +22,13 @@
 			CustomerDto customer = cDao.getCustomer(cid);
 			session.setAttribute("customer", customer);
 			if(method.equals("null")){
-				response.sendRedirect("main.jsp");
+				response.sendRedirect(conPath+"/main/main.jsp");
 			}else{
-				response.sendRedirect(method + ".jsp");
+				response.sendRedirect(conPath + "/" + method + ".jsp");
 			}
 		}else{
 			msg = URLEncoder.encode("아이디/비밀번호를 잊으셨나요?", "utf-8");
-			response.sendRedirect("login.jsp?msg="+msg);
+			response.sendRedirect("loginForm.jsp?msg="+msg);
 		}
 	%>
 </body>

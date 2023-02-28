@@ -9,34 +9,34 @@
 	<link href="<%=conPath %>/css/content.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<jsp:include page="../main/header.jsp"/>
+	<div id="content_form">
 	<%
-		String num = request.getParameter("num"); 
+		String fnum = request.getParameter("fnum"); 
 		/* pageNum 추가 */
 		String pageNum = request.getParameter("pageNum");
 		
 	%>
-	<jsp:include page="../main/header.jsp"/>
-	<div id="content_form">
-		<table>
-			<caption><%=num %>번 글 삭제</caption>
-			<tr>
-				<td>
-					<fieldset>
-						<legend>삭제를 위한 암호</legend>
-						<form action="<%=conPath%>/fileboard/fboardDeletePro.jsp" method="post">
-							<input type="hidden" name="num" value="<%=num %>">
-							<input type="hidden" name="pageNum" value="<%=pageNum %>">
-							<p>암호<input type="password" name="pw" required="required" 
-							autofocus="autofocus" class="btn"></p>
-							<p>
-								<input type="submit" value="삭제" class="btn">
-								<input type="button" value="삭제취소" class="btn" onclick="history.back()">
-							</p>
-						</form>
-					</fieldset>
-				</td>
-			</tr>
-		</table>
+	<table>
+		<caption><%=fnum %>번 글 삭제</caption>
+		<tr>
+			<td>
+				<fieldset>
+					<legend>삭제를 위한 암호</legend>
+					<form action="<%=conPath%>/fileboard/fboardDeletePro.jsp" method="post">
+						<input type="hidden" name="fnum" value="<%=fnum %>">
+						<input type="hidden" name="pageNum" value="<%=pageNum %>">
+						<p>암호<input type="password" name="fpw" required="required" 
+						autofocus="autofocus" class="btn"></p>
+						<p>
+							<input type="submit" value="삭제" class="btn">
+							<input type="button" value="삭제취소" class="btn" onclick="history.back()">
+						</p>
+					</form>
+				</fieldset>
+			</td>
+		</tr>
+	</table>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>
 </body>

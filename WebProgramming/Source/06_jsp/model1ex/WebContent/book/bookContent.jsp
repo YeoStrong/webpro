@@ -9,6 +9,9 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="<%=conPath %>/css/content.css" rel="stylesheet" type="text/css">
+	<style>
+		#content_form{padding: 40px;}
+	</style>
 </head>
 <body>
 	<%
@@ -32,11 +35,19 @@
 			<tr><td><%=book.getBtitle() %></td></tr>
 			<tr>
 				<td>
-					<del><%=book.getBprice() %></del><br>
-					<b>
-						<%=book.getBprice() * (100 - book.getBdiscount()) / 100 %>원 <br>
-						(<%=book.getBdiscount() %>% 할인)
-					</b>
+					<%if(book.getBdiscount()!=0){ %>
+						<del><%=book.getBprice() %></del><br>
+						<b>
+							<%=book.getBprice() * (100 - book.getBdiscount()) / 100 %>원 <br>
+							(<%=book.getBdiscount() %>% 할인)
+						</b>
+					<%}else{ %>
+						<b>
+							<%=book.getBprice() %>원<br>
+							<img src="<%=conPath %>/img/hot.gif"> <br>
+							절찬 판매중
+						</b>
+					<%} %>
 				</td>
 			</tr>
 			<tr>

@@ -7,10 +7,18 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="<%=conPath %>/css/content.css" rel="stylesheet" type="text/css">
+	<style>
+		#content_form{padding: 40px;}
+	</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div  id="content_form">
+	<%
+		if(session.getAttribute("customer")==null){
+			response.sendRedirect(conPath+"/customer/loginForm.jsp?method=book/bookRegister");
+		}
+	%>
 		<form action="bookRegisterPro.jsp" method="post" enctype="multipart/form-data">
 			<table>
 				<caption>책 등 록</caption>

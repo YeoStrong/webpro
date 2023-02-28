@@ -33,7 +33,7 @@
 	<%
 		CustomerDto customer = (CustomerDto)session.getAttribute("customer");
 		if(customer==null){
-			response.sendRedirect("login.jsp?method=modify");
+			response.sendRedirect("loginForm.jsp?method=customer/modifyForm");
 		}else{
 			cid = customer.getCid();
 			cpw = customer.getCpw();
