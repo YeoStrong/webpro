@@ -33,7 +33,7 @@
 	%>
 		<script>
 			alert('회원가입 감사합니다');
-			location.href = 'login.jsp';
+			location.href = 'loginFrom.jsp';
 		</script>
 		
 	<%		}else{

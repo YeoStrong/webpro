@@ -78,7 +78,7 @@
 						<input type="submit" value="가입하기" class="joinBtn_style">
 						<input type="reset" value="다시하기" class="joinBtn_style">
 						<input type="button" value="로그인" class="joinBtn_style" 
-											onclick="location.href='<%=conPath%>/customer/login.jsp'">
+											onclick="location.href='<%=conPath%>/customer/loginForm.jsp'">
 					</td>
 				</tr>
 			</table>
