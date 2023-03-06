@@ -6,13 +6,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h1>회원정보(ex1_view.jsp)</h1>
-	<h3>회원 : ${member }</h3>
-	<h3>ID : ${member.id }</h3>
-	<h3>PW : ${member.pw }</h3>
-	<h3>name : ${member.name }</h3>
+	<form action="<%=conPath %>/ex1_servlet">
+		<p>ID <input type="text" name="id"></p>
+		<p>PW <input type="password" name="pw"></p>
+		<p>NAME <input type="text" name="name"></p>
+		<p><input type="submit" value="확인"></p>
+	</form>
 </body>
 </html>

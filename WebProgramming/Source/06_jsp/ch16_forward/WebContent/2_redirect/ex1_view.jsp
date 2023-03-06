@@ -9,6 +9,8 @@
 	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+	<jsp:useBean id="member" class="com.lec.ex.Member" scope="page"/>
+	<jsp:setProperty property="*" name="member"/>
 	<h1>회원정보(ex1_view.jsp)</h1>
 	<h3>회원 : ${member }</h3>
 	<h3>ID : ${member.id }</h3>
