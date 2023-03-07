@@ -5,3 +5,4 @@ SELECT * FROM EMP;
 SELECT * FROM EMP 
     WHERE ENAME LIKE '%'||TRIM(UPPER('  s '))||'%'
         AND JOB LIKE '%'||UPPER(TRIM(' m  '))||'%';
+COMMIT;

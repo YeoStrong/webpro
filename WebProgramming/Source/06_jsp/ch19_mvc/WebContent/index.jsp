@@ -11,9 +11,7 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h1><a href="${conPath }/empList">EmpList</a></h1>
-	<!-- EmpList.java(서블릿, 프로세스), empList.jsp(뷰) : 함께 -->
-	<h1><a href="${conPath }/empSch">empSch(이름과 job으로 검색한 list만 출력)</a></h1>
-	<!-- EmpSch.java(서블릿, 프로세스), empSch.jsp(뷰) : 여러분 -->
+	<h1><a href="${conPath }/memberList.do">회원리스트</a></h1>
+	<h1><a href="${conPath }/memberJoinView.do">회원가입</a></h1>
 </body>
 </html>
