@@ -1,0 +1,13 @@
+[ 13 ] 답변 게시판
+답변 메커니즘
+
+1. num은 1씩 증가
+2. ref - 원글이면 num과 같고,
+          답변글이면 원글의 ref와 같다
+3. re_step은 원글이면 0
+                답변글이면 다음과 같이 진행한다
+  ⓐ ref가 같고 원글보다 re_step가
+      큰 값이 있으면 그 글의 re_step을 re_step+1
+  ⓑ 답변글 re_step = 원글 re_step + 1
+4. re_indent - 원글이면 0
+                답변글이면 원글의 re_indent+1

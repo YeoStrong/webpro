@@ -1,0 +1,25 @@
+[ 18 ] Front Controller와 Command 구조
+실무에서 작업을 할 때 큰 구조에서 두 패턴 구조를 필히 알고 있어야
+다른 팀원과 co-work하는데 문제가 없고 개발시에도 효율적으로 개발을 할 수 있다. 
+체계화된 개발론으로도 볼 수 있다.
+1. url-pattern
+(1) 디렉터리 구조 ; 디렉터리 형태로 서버의 해당 컴포넌트(서블릿)를 찾아서 실행하는 구조. 
+	서블릿을 만들고 서블릿의 긴 주소가 보안상 문제가 되거나 너무 길어, 매핑을 한다.
+	 xml이나 어노테이션을 이용해 매핑을 할 때 사용했던 방식
+	① http://localhost:8181/ch18/EmpList  → /EmpList 서블릿
+	    http://localhost:8181/ch18/servlet/com.lec.ex.EmpList 서블릿의 긴 주소를 매핑한다.
+	② http://localhost:8181/ch18/EmpSch    → /EmpSch  서블릿
+
+(2) 확장자 구조 ; 확장자 형태로 서버의 해당 컴포넌트를 찾아서 실행하는 구조
+	① http://localhost:8181/ch18/EmpList.do  ↘
+	② http://localhost:8181/ch18/EmpSch.do  → *.do 서블릿
+
+
+2. FrontController ; 클라이언트의 다양한 요청을 한곳으로 집중시켜, 개발 및 유지보수에 효율성을 극대화
+위의 경우 컴포넌트들끼리 중복되는 코드가 있을 수도 있고, 파일이 여러 개라 집중성이 떨어질 수 있다.
+요청을 받는 창구를 하나로 집중시켰다고도 할 수 있다.
+
+
+3. Command 구조 ; 클라이언트로부터 받은 요청들에 대해서, 서블릿이 작업을 직접 처리 하지 않고, 
+		해당 클래스가 처리하도록 한다. FrontController 한군데서 처리하면 소스가 또 너무 방대해진다. 
+		FrontController.javj는 큰 형태만 갖고 있고, 세부적인 처리는 command에서 처리한다.

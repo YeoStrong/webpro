@@ -1,0 +1,12 @@
+[ 14 ] 파일업로드
+1. 파일 업로드 라이브러리 설치
+    (1) 파일 업로드 구현을 위해 파일 업로드와 관련된 라이브러리 다운로드 및 설치가 필요하다.
+    (2) http://www.servlets.com 접속 후 좌측의 COS File Upload Library(com.oreilly.servlet) 클릭 후, cos-22.05.zip 다운로드후 압축해제
+    (3) 다운로드 받은 라이브러리(cos.jar)를 WEB-INF>lib에 복사 ; 이렇게 이클립스 프로젝트 안에 라이브러리를 넣어야 파일업로드 기능을 구현할 수 있다
+
+2. 파일 업로드 프로그래밍
+	업로드 파일 저장 폴더 생성 webapp밑에 fileUpFolder 생성(업로드할 파일 위치)
+	① 직접 생성한 폴더 경로
+	source/06_jsp/ch14_fileUp/WebContent/fileFolder
+	② 실제 업로드 파일이 저장된 서버측 경로
+	IDE/apache-tomcat/wtpwebapps/ch14_fileUp/fileFolder

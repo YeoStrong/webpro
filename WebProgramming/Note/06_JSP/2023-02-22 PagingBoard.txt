@@ -1,0 +1,14 @@
+[ 13 ] 페이징 가능한 게시판
+paging 메커니즘
+
+pageNum 	현재 몇 페이지인지(String)	　
+currentPage	현재 몇 페이지인지(int)	　
+　	　	　
+startRow	    시작번호	(현재페이지 - 1) * 페이지당 갯수+ 1
+endRow	    끝번호 	시작번호 + 페이지당갯수 - 1
+pageCnt	    전체 페이지 수	Math.ceil((double)전체글갯수/페이지당 글 갯수)
+　	    블록수	Math.ceil(페이지갯수/블록당 페이지갯수)
+PAGESIZE	    한 페이지당 글 수 :10개	　
+BLOCKSIZE   블록당 페이지 수 : 10개	　
+startPage	    시작페이지	((현재페이지 -1)/블록당페이지수)*블록당페이지수 +1
+endPage	    끝페이지	시작페이지 + 블록당페이지 수 -1

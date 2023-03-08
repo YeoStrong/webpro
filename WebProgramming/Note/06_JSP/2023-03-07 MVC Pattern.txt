@@ -1,0 +1,10 @@
+[ 19 ] MVC 패턴
+1. MVC 패턴의 이해
+    (1) MVC란 Model, View, Controller를 뜻하는 용어로 개발 형태의 일종
+    (2) Model은 데이터베이스와의 관계를 담당. 클라이언트의 요청에서 필요한 자료를 데이터베이스로부터 추출하거나, 수정하여 Controller로 전달.
+    (3) View는 사용자한테 보여지는 UI. 주로 .jsp파일로 작성, Controller에서 어떤 View 컴포넌트를 보여줄지 결정.
+    (4) Controller는 클라이언트의 요청을 받고, 적절한 Model에 지시를 내리며, Model에서 전달된 데이터를 적절한  View에 전달.
+    (5) 이렇게 작업을 분할하면, 추후 유지보수에 좋음.
+    (6) Model1 ; MVC에서 View와 Controller가 같이 있는 형태
+    (7) Model2 ; MVC에서 Model, View 그리고 Controller가 모두 모듈화(부품화) 되어 있는 형태
+※ 작업속도는 처음엔 Model1이 훨씬 빠른 듯하나 작업규모가 커지고 업데이트가 반복되면 Model2가 결국 훨씬 효율적이게 됨.

@@ -1,0 +1,96 @@
+[ 17 ] JSTL(JSP Standard Tag Library)
+
+1. JSTL 개요 및 설치
+
+(1) JSTL 개요
+	① JSP의 경우 HTML 태그와 같이 사용되어 전체적인 코드의 가독성이 떨어짐. 
+	(서블릿은 순수자바코드라 일관적이고 가독성도 높지만, 
+	JSP의 경우 JSP태그와 HTML태그가 반복되고 믹스되어 번잡해 보이고 가독성도 떨어진다) 
+	그래서 이러한 단점을 보완하고자 만들어진 대표적인 태그 라이브러리가 JSTL. 
+	(개발자로 하여금 효율적이고 유지보수 측면에서도 우수)
+	② 라이브러리란 여러 프로그램이 공통으로 사용하는 코드를 모아 놓은 코드의 집합
+	③ JSTL의 경우 우리가 사용하는 Tomcat컨테이너에 포함되어 있지 않으므로, 별도의 설치를 하고 사용
+
+(2) JSTL을 가지고 할 수 있는 일
+	① 간단한 프로그램 로직의 구사(자바의 변수 선언, if문, for문 등에 해당하는 로직)
+	② 다른 JSP 페이지 호출(<c:redirect>, <c:import>)
+	③ 날짜, 시간, 숫자의 포맷
+	④ JSP 페이지 하나를 가지고 여러 언어의 웹 페이지 생성
+
+(3) 설치
+① http://tomcat.apache.org/ 접속 한 후, 좌측의 Taglibs 클릭
+② Apache Standard Taglib 클릭
+③ Standard 1.1 download 클릭(https://tomcat.apache.org/taglibs/standard 접속 후 클릭해도 됨)
+④ binaries/ 클릭
+⑤ jakarta-taglibs-standard-1.1.2.zip 다운
+⑥ 압축해제
+⑦ lib폴더의 jstl.jar와 standard.jar파일을 apache-tomcat폴더\lib에 넣는다
+
+2. JSTL 라이브러리
+(0) JSTL에서는 다섯 가지의 라이브러리를 제공(Core, XML Processing, formatting, SQL, functions)
+	- Core		http://java.sun.com/jsp/jstl/core
+		일반 프로그래밍 언어에서 제공하는 것과 유사한 변수 선언, 실행 흐름의 제어기능을 제공하고 다른 JSP페이지로 제어를 이동하는 기능도 제공
+	- I18N formatting	http://java.sun.com/jsp/jstl/fmt
+		숫자, 날짜, 시간을 포맷팅하는 기능과 국제화, 다국어 지원기능을 제공
+	- Functions	http://java.sun.com/jsp/jstl/functions
+		문자열을 처리하는 함수를 제공
+
+(1) Core ; Core 라이브러리는 기본적인 라이브러리로 출력, 제어문, 반복문 같은 기능이 포함. 
+	JSP페이지에서 위의 prefix를 사용하기 위해서는 taglib 지시자를 이용해서 라이브러리의 URI 식별자와 접두어를 연결해야 한다. 
+	Taglib 지시자는 다른 지시자와 마찬가지로 <%@로 시작해서 %>로 끝난다. 아래와 같이 두개의 속성값을 써야 한다.
+	가장 먼저 해야 할 일은 페이지 지시자에 태그라이브러리를 사용한다고 명시하기.
+
+① 출력 태그 <c:out>
+	<c:out value=“출력값” default=“기본값” escapeXml=“true or false”> false를 주면 특수기호를 해석
+② 변수 설정 태그 <c:set>
+	<c:set var=“변수명” value=“설정값” target=“객체” property=“값” scope=“범위”>어떤 객체의 속성값을 변수로 지정
+③ 변수를 제거하는 태그 <c:remove>
+	<c:remove var=“변수명” scope=“범위”>
+④ 예외 처리 태그 <c:catch>
+	<c:catch var=“변수명”>
+⑤ 제어문(if)태그 <c:if>
+	<c:if test=“조건” var=“조건 처리 변수명” scope=“범위”>
+⑥ 제어문 태그 : <c:choose>
+	<c:choose>
+	    <c:when test=“조건1”> 처리 내용 </c:when>
+	    <c:when test=“조건2”> 처리 내용 </c:when>
+	    <c:when test=“조건3”> 처리 내용 </c:when>
+	    <c:otherwise> 처리 내용 </c:otherwise>
+	</c:choose>
+⑦ 반복문(for) 태그 : <c:forEach>
+	<c:forEach items=“객체명” begin=“시작 인덱스” end=“끝 인덱스” step=“증감식” var=“변수명” varStatus=“상태변수”>
+	<c:forTokens var=“변수명” item=전체스트링 delims=구분자>
+⑧ 페이지 이동태그 <c:redirect url=”url”>
+	<c:redirect url=“url”>
+
+(2) fmt : 국제화/형식화 액션. 국제화/형식화 기능을 제공해 주는 JSTL 라이브러리
+① 국제화는 다국어 내용을 처리, 형식화는 날짜와 숫자 형식 등을 처리
+	<%@taglib prefix=”fmt” uri=”http://java.sum.com/jsp/jstl/fmt” %>
+② 인코딩 관련 태그 <fmt:requestEncoding>
+	Request 객체로 부터 전달 받은값들을 인코딩할 때 사용 - 보통 한글 값이 넘어올 경우 <fmt:requestEncoding value="utf-8"/>코드로 Request 객체로 받는 값을 한글에 맞게 인코딩해 준다
+	<% request.setCharacterEncoding(“utf-8”);%>역할
+③ 국제화 관련 태그 <fmt:setLocale> <fmt:timeZone> <fmt:setTimeZone> <fmt:bundle>
+ 	<fmt:setBundle> <fmt:message> <fmt:param>
+④ 형식화 관련 태그
+ 
+○ <fmt:formatNumber> 
+	<fmt:formatNumber value=”값” type=”타입” pattern=”패턴” currencyCode=”값” currencySymbol=”값” groupingUsed=”true or false” maxIntegerDigits=”값” minIntegerDigits=”값” maxFractionDigits=”값” minFractionDigits=”값” var=”변수명” scope=”범위”>
+	­ 태그는 숫자형식의 패턴을 설정할 때 사용
+	­ value 속성에는 패턴을 적용 시킬 원래의 값을 입력
+	­ type은 숫자의 타입을 의미. 숫자, 통화, 퍼센트중 원하는 타입으로 설정 가능
+	­ pattern 속성은 지정한값을 어떤 패턴으로 변화 시킬지를 정 할수 있다
+	­ currencyCode는 통화코드를 의미하며, 숫자타입이 통화일 경우만 유효하다
+	­ currencySymbol도 숫자타입이 통화일 유효하며, 통화기호를 지정할 수 있다
+	­ groupingUsed는 그룹기호의 포함 여부를 나타낸다
+	­ maxIntegerDigits는 최대정수 길이 
+	­ minIntegerDigits는 최소 정수 길이
+	­ maxFractionDigits은 최대 소수점 자릿수  
+	­ minFractionDigits는 최소 소수점 자릿수를 의미
+○ <fmt:formatDate>
+	<fmt:formatDate value=”값” type=”타입” dateStyle=”값” timeStyle=”값” pattern=”패턴” timeZone=”값” var=”변수명” scope=”범위”>
+	­ 날짜 형식의 패턴을 설정할 때 사용되는 태그
+	­ value 속성에는 날짜 또는 시간을 입력  
+	­ type 속성으로 날짜인지 시간인지 또는 날짜와 시간 둘다 포함한 타입인지를 지정
+	­  dateStyle은 날짜의 스타일을 지정. type 속성이 date 또는 both일 때만 적용  
+	­ timeStyle은 시간의 스타일을 지정. type 속성이 time 또는 both일 때만 적용 
+	­ timeZone속성은 날짜와 시간이 표시될 시간대를 지정
