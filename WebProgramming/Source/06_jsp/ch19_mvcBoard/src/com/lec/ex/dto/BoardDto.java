@@ -1,17 +1,15 @@
 package com.lec.ex.dto;
-
 import java.sql.Timestamp;
-
 public class BoardDto {
 	private int    bid;
 	private String bname;
 	private String btitle;
 	private String bcontent;
 	private Timestamp bdate;
-	private int	   bhit;
-	private int	   bgroup;
-	private int	   bstep;
-	private int	   bindent;
+	private int    bhit;
+	private int    bgroup;
+	private int    bstep;
+	private int    bindent;
 	private String bip;
 	public BoardDto() {}
 	public BoardDto(int bid, String bname, String btitle, String bcontent, Timestamp bdate, int bhit, int bgroup,

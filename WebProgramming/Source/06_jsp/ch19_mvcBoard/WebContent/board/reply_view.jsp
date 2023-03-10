@@ -11,9 +11,15 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form action="${conPath }/write.do" method="post">
+	<!-- reply_view.jsp : param.pageNum, param.bid, requestScope.replyBoard(원글 정보) -->
+	<form action="${conPath }/reply.do" method="post">
+		<input type="hidden" name="pageNum" value="${param.pageNum }">
+		<input type="hidden" name="bid" value="${param.bid }"> <!-- 원글 -->
+		<input type="hidden" name="bgroup" value="${replyBoard.bgroup }"> <!-- 원글 -->
+		<input type="hidden" name="bstep" value="${replyBoard.bstep }"> <!-- 원글 -->
+		<input type="hidden" name="bindent" value="${replyBoard.bindent }"> <!-- 원글 -->
 		<table>
-			<caption>글쓰기</caption>
+			<caption>${param.bid }번에 대한 답변글 쓰기</caption>
 			<tr>
 				<th>작성자</th>
 				<td>
@@ -23,7 +29,10 @@
 			</tr>
 			<tr>
 				<th>글제목</th>
-				<td><input type="text" name="btitle" required="required"></td>
+				<td>
+					<input type="text" name="btitle" required="required"
+							value="[답]${replyBoard.btitle }">
+				</td>
 			</tr>
 			<tr>
 				<th>본문</th>
@@ -31,10 +40,10 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="글쓰기" class="btn">
+					<input type="submit" value="답변" class="btn">
 					<input type="reset" value="취소" class="btn">
 					<input type="button" value="목록" class="btn"
-						onclick="history.back()">
+						onclick="location.href='${conPath}/list.do?pageNum=${param.pageNum }'">
 				</td>
 			</tr>
 		</table>
