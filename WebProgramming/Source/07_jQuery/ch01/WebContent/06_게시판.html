@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('tr').click(function(){
+				var no = $(this).children().eq(0).text().trim(); // String으로
+				// alert('글번호: ' + no);
+				if(isNaN(Number(no))){
+					// alert('타이틀을 클릭했네');
+				}else{
+					location.href = '05_selector.html?no='+no;
+				}
+			});
+		});
+	</script>
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<table>
+		<tr><th>글번호</th><th>글제목</th><th>글쓴이</th><th>조회수</th></tr>
+		<tr><td>4</td><td>타이틀임</td><td>홍준표</td><td>87</td></tr>
+		<tr><td>3</td><td>타이틀</td><td>이회창</td><td>5</td></tr>
+		<tr><td>2</td><td>타이</td><td>박근혜</td><td>71</td></tr>
+		<tr><td>1</td><td>타</td><td>이띵박</td><td>159</td></tr>
+	</table>
+</body>
+</html>

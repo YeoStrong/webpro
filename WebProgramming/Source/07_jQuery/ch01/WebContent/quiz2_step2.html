@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		p {text-align: center; }
+	</style>
+	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('input[name="n1"]').val(Math.trunc(Math.random()*10)); // 0 ~ 9
+			$('input[name="n2"]').val(Math.trunc(Math.random()*10));
+			var opArray = ['+','-','*','/'];
+			var opIdx = parseInt(Math.random()*opArray.length); // 0~3
+			var n1 = Number($('input[name="n1"]').val());
+			var n2 = Number($('input[name="n2"]').val());
+			var rs;
+			var answer;
+			$('input[name="answer"]').keyup(function(){
+				answer = Number($('input[name="answer"]').val());
+			});
+			$('.operation').html('<b>'+opArray[opIdx]+'</b>');
+			$('.result').html(rs);
+			// 채점해봐 click event
+			$('button#cal').click(function(){
+				if(opIdx==0){
+					rs = n1 + n2;
+					if(rs==answer){
+						$('.result').html('정답입니다!');
+					}else{
+						$('.result').html('오답입니다...');
+					}
+				}else if(opIdx==1){
+					rs = n1 - n2;
+					if(rs==answer){
+						$('.result').html('정답입니다!');
+					}else{
+						$('.result').html('오답입니다...');
+					}
+				}else if(opIdx==2){
+					rs = n1 * n2;
+					if(rs==answer){
+						$('.result').html('정답입니다!');
+					}else{
+						$('.result').html('오답입니다...');
+					}
+				}else if(opIdx==3){
+					rs = n1 / n2;
+					if(n2==0){
+						$('.result').html('정답입니다!');
+					}else{
+						if(rs==answer){
+							$('.result').html('정답입니다!');
+						}else{
+							$('.result').html('오답입니다...');
+						}						
+					}
+				}
+			});
+			// 다시해봐 click event
+			$('button#reset').click(function(){
+				$('input[name="n1"]').val(Math.trunc(Math.random()*10)); // 0 ~ 9
+				$('input[name="n2"]').val(Math.trunc(Math.random()*10));
+				opIdx = parseInt(Math.random()*opArray.length); // 0~3
+				$('.operation').html('<b>'+opArray[opIdx]+'</b>');
+				$('input[name="answer"]').val('');
+				$('.result').html('');
+			});
+		});
+	</script>
+</head>
+<body>
+	<p> 2단계 : 
+		<input type="text" name="n1" size="5" readonly="readonly"> 
+		<span class="operation"></span>
+		<input type="text" name="n2" size="5" readonly="readonly">
+		=
+		<input type="text" placeholder="답" name="answer" size="5">
+	</p>
+	<p>
+		<button id="reset">다시해봐</button>
+		<button id="cal">채점해봐</button>
+	</p>
+	<hr>
+	<h1 class="result"></h1>
+</body>
+</html>

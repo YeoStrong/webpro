@@ -15,10 +15,14 @@ public class MLoginService implements Service {
 		String mid = request.getParameter("mid");
 		String mpw = request.getParameter("mpw");
 		MemberDao mDao = new MemberDao();
-		mDao.loginCheck(mid, mpw);
-		MemberDto member = mDao.getMember(mid);
-		HttpSession session = request.getSession();
-		session.setAttribute("member", member);
+		int result = mDao.loginCheck(mid, mpw);
+		if(result==MemberDao.LOGIN_SUCCESS) {
+			MemberDto member = mDao.getMember(mid);
+			HttpSession session = request.getSession();
+			session.setAttribute("member", member);			
+		}else {
+			request.setAttribute("loginErrorMsg", "아이디와 비밀번호를 확인하세요");
+		}
 	}
 
 }

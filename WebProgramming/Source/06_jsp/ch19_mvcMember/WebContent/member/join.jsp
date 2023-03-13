@@ -42,7 +42,7 @@
 			</tr>
 			<tr>
 				<th>생년월일</th>
-				<td><input type="date" name="tempbirth"></td>
+				<td><input type="date" name="mbirth"></td>
 			</tr>
 			<tr>
 				<td colspan="2"> </td>

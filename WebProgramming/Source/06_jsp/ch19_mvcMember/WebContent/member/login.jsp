@@ -11,21 +11,14 @@
 	<link href="${conPath }/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<c:if test="${session.member eq 1}">
-		<script>alert('로그인 성공');</script>
-	</c:if>
-	<c:if test="${session.member eq 0}">
+	<c:if test="${not empty  joinResult}">
 		<script>
-			alert('아이디나 비밀번호를 확인해주세요');
-			history.back();
+			alert('${joinResult}');
 		</script>
 	</c:if>
-	<c:if test="${joinResult eq 1}">
-		<script>alert('회원가입에 성공했습니다');</script>
-	</c:if>
-	<c:if test="${joinResult eq 0}">
+	<c:if test="${not empty  joinErrorMsg}">
 		<script>
-			alert('회원가입에 실패했습니다');
+			alert('${joinErrorMsg}');
 			history.back();
 		</script>
 	</c:if>
@@ -33,7 +26,7 @@
 		<table>
 			<tr><td>아이디</td>
 			<td><input type="text" name="mid" required="required" autofocus="autofocus"
-			value="${param.mid }">
+			value="${mid }"> <!-- == ${sessionScope.mid} -->
 			</td>
 			<tr>
 				<td>비밀번호</td>

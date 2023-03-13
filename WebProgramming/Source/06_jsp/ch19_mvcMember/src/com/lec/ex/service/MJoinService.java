@@ -11,6 +11,7 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.lec.ex.dao.MemberDao;
 import com.lec.ex.dto.MemberDto;
@@ -23,29 +24,29 @@ public class MJoinService implements Service {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String path = request.getSession().getServletContext().getRealPath("memberPhotoUp");
-		int maxSize = 1024*1024*10;
+		int maxSize = 1024*1024*1;
 		String filename = "";
 		MemberDao mDao = new MemberDao();
 		MemberDto mDto = new MemberDto();
+		MultipartRequest mRequest = null;
+		int result = 0;
 		try{
-			MultipartRequest mRequest = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());	
+			mRequest = new MultipartRequest(request, path, maxSize, "utf-8", new DefaultFileRenamePolicy());	
 			Enumeration<String> paramNames = mRequest.getFileNames();
-			while(paramNames.hasMoreElements()){
+			// while(paramNames.hasMoreElements()){ // 첨부파일 1개라 not need
 				String param = paramNames.nextElement();
 				filename = mRequest.getFilesystemName(param);
-			}
+			// }
 			String mid = mRequest.getParameter("mid");
 			String mpw = mRequest.getParameter("mpw");
 			String mname = mRequest.getParameter("mname");
 			String memail = mRequest.getParameter("memail");
 			String mphoto = filename!=null? filename:"NOIMG.jpg";
 			String maddress = mRequest.getParameter("maddress");
-			String tempBirth = mRequest.getParameter("tempBirth");
-			Date mbirth;
-			if(tempBirth!=null) {
-				mbirth = Date.valueOf(tempBirth);			
-			}else {
-				mbirth = null;
+			String mbirthStr = mRequest.getParameter("mbirth");
+			Date mbirth = null;
+			if(!mbirthStr.equals("")) {
+				mbirth = Date.valueOf(mbirthStr);			
 			}
 			mDto.setMid(mid);
 			mDto.setMpw(mpw);
@@ -54,16 +55,32 @@ public class MJoinService implements Service {
 			mDto.setMphoto(mphoto);
 			mDto.setMaddress(maddress);
 			mDto.setMbirth(mbirth);
-			mDao.confirmId(mid);
+			result = mDao.confirmId(mid);
+			if(result == MemberDao.NONEXISTENT) { // 가입 가능한 mID이까 회원가입
+				MemberDto member = new MemberDto(mid, mpw, mname, memail, 
+						mphoto, mbirth, maddress, null);
+				// 회원가입
+				result = mDao.join(member);
+				if(result == MemberDao.SUCCESS) {
+					HttpSession session = request.getSession(); // 세션은 request로 부터
+					session.setAttribute("mid", mid);
+					request.setAttribute("joinResult", "회원가입이 완료되었습니다");
+				}else {
+					request.setAttribute("joinErrorMsg", "정보가 너무 길어서 회원가입 실패");
+				}
+			}else {
+				request.setAttribute("joinErrorMsg", "중복된 ID는 회원가입이 불가합니다");
+			}
 		} catch(IOException e){
 			System.out.println(e.getMessage());
+			request.setAttribute("joinErrorMsg", "첨부파일 용량이 너무 큽니다. 1mb 이하의 파일을 업로드 하세요");
 		}
 		// 서버에 업로드 한 후 소스폴더로 file copy
 		InputStream is = null;
 		OutputStream os = null;
 		try{
 			File serverFile = new File(path + "/" + filename);
-			if(serverFile.exists()){
+			if(serverFile.exists() && !filename.equals("NOIMG.jpg") && result == MemberDao.SUCCESS){
 				is = new FileInputStream(serverFile); // 서버에 업로드 된 파일
 				os = new FileOutputStream("D:/YeosongYoon/WebProgramming/Source/06_jsp/ch19_mvcMember/WebContent/memberPhotoUp/" + filename); // 소스폴더로 복사될 파일
 				byte [] bs = new byte[(int)serverFile.length()];
@@ -84,6 +101,5 @@ public class MJoinService implements Service {
 				System.out.println(e.getMessage());
 			}
 		}
-		request.setAttribute("joinResult", mDao.join(mDto));
 	}
 }
