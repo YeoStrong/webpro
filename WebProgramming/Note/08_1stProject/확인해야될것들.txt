@@ -1,0 +1,18 @@
+★★★★★중요★★★★★부적합한 열이름 : 오라클DB에서 정보 받아올때 있어야 받아온다고 한 정보 컬럼이 없어도 뜸. 거의 sql문 관련
+
+★완료★ 탈퇴 처리후 자유게시판 누를시 로그인 상태로 뜨는 것 : main에서 withdrawal 체크해서 logout.do로 보냄
+★완료★ fboard 답변쓰기 버튼 클릭시 java.lang.NumberFormatException : originFboard라고 보내놓고 originBoard로 받음
+★완료★ 댓글 쓰기 작업중, 부적합한 열이름
+★완료★ ipv6를 ipv4로
+★완료★ 글목록에서 검색 : 여러개 검색은 스프링에서 하는 걸로 하고, 일단은 제목 검색만
+★완료★ Nboard 작업중 : DB바꿨고 DAO 바꾸기(NBOARD)
+★완료★ fboardModify 수정
+★완료★ gboard 작성시 champ에 없는 거 사용하면 작성 안됨
+★완료★ 영상게시판 댓글수정 글수정 jsp 남음
+★완료★ ORA-01722: invalid number	  쿼리가 잘못돼서 ?에 vnum대신 mid를 물어보고 거기다 숫자를 넣어서 발생
+★완료★ 인증사진 NOIMG.JPG인 애들 X로 표현하고 싶은데... ne 대신 !=
+★완료★ 회원 등급 조절
+★완료★ 마이페이지 내가 쓴 글
+★완료★ 마이페이지 내 정보
+섬머노트 넣기
+평점

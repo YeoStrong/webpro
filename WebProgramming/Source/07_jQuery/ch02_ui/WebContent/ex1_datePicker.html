@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+    	dateFormat: "yy-mm-dd",
+    	dayNames: [ "일", "월", "화", "수", "목", "금", "토" ],
+    	monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+    	changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시
+    	changeYear: true,
+    	showMonthAfterYear: true,
+    	yearSuffix: '년',
+    	showOtherMonths: true,
+    	// minDate: '-100y',
+    	minDate: new Date(1950, 1, -1, 1),	 // 1950년 1월 1일을 최소 날짜로 세팅
+      	yearRange: 'c-100:c+10'
+    });
+  } );
+  </script>
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<p>생년월일<input type="text" id="datepicker" name="birth"></p>
+	<p>생년월일2<input type="date"></p>
+</body>
+</html>

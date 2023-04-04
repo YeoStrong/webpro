@@ -1,0 +1,29 @@
+0. Ajax : 서버와 데이터 교환을 하는 기술.
+    웹페이지의 특정부분(한파트)를 업데이트하고 서버와 데이터를 교환하는 기술.
+   기존의 웹페이지의 내용을 변경하기 위해서는 웹페이지에 떠있는 페이지를 다시 로딩해야 함.
+    그런데 Ajax를 이용하게 되면 특정부분의 영역에 있는 데이터 수정시 전체 페이지를 로딩하지 않고 서버와 데이터 교환이 가능
+    Ajax는 웹페이지의 전체내용을 다시 불러들이지 않고 웹페이지의 일부분을 배경에서 서버와 데이터 교환이 일어나 원하는 부분에 뿌려 줄 수 있는 기술이다.
+
+    jQuery에서는 Ajax와 관련하여 몇 개의 메소드를 제공하고 있다.
+    jQuery Ajax메소드를 사용하게 되면 외부데이터를 로딩해서 보여질 수 있다.
+    jQuery를 이용하지 않으면 Ajax이용이 어려울 수 있으나 jQuery를 이용하면 쉬운 코딩이 될 수 있다.
+
+1. Http Request : GET vs. POST
+    $.get(URL, callback);
+    $.post(URL, {파라미터이름:전달파라미터값, callback);
+    $.ajax({/*	$.ajax(json형식으로 option 설정)
+    		    ex) $.ajax({url:'', type:'get', data:~ , success:function(data,status){} });
+    ① url : 요청 자원(서버)를 호출, 일반적으로 호출된 자원에서 json형식으로 데이터 return 해준다
+    ② type : 요청처리방식
+    ③ data: 요청시, 함께 전달되는 데이터 
+            ex. $(‘form’).serialize()
+	    form안에 있는 데이터를 query로 변경하여 전달
+    ④ dataType : 요청 후, 응답의 결과로 반환되는 데이터의 종류를 선언
+            ex. Xml, html, joson, text
+    ⑤ success : 성공했을 때, 처리할 내용, 콜백함수로 나타냄.
+            ex. Function(data, status){}
+    ⑥ error : 응답이 에러가 났을 때, 에러 상태에 대한 코드를 반환
+	ex. error :  function(code){
+	    code:에러에 대한 code 내용 전달...
+	}
+*/})
